@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="/DoAn/laptrinhweb/css/style.css">
     <style>
         h1 {
-            position: absolute;
-            left: 1090px;
-            top: 250px;
+            text-align: center;
             font-family: 'Anton';
             font-size: 65px;
         }
@@ -50,22 +48,77 @@
             /* Tạo hiệu ứng nhấn xuống */
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
+    <script>
+        $(document).ready(function() {
+            $('#username').on('input', function() {
+                var username = $(this).val().trim();
+                // Điều kiện: ít nhất 3 ký tự và phải có ít nhất 1 chữ cái
+                var dkname = /[A-Za-z]/.test(username);
+
+                if (username === '') {
+                    $(this).css('border-color', '');
+                    $('#username-error').text('');
+                    return;
+                }
+
+                if (username.length < 3 || !dkname) {
+                    $(this).css('border-color', 'red');
+                    $('#username-error').text('Tên đăng nhập phải có ít nhất 3 ký tự và chứa ít nhất 1 chữ cái.');
+                } else {
+                    $(this).css('border-color', '');
+                    $('#username-error').text('');
+                }
+            });
+            $('#loginForm').on('submit', function(e) {
+                var username = $('#username').val();
+                var password = $('#password').val();
+                if (!username || !password) {
+                    alert('Vui lòng điền đầy đủ thông tin đăng nhập.');
+                    return;
+                }
+                // Gửi dữ liệu đến máy chủ (giả sử có một API để xử lý đăng nhập)
+                $.ajax({
+                    url: '/DoAn/laptrinhweb/api/login.php',
+                    type: 'POST',
+                    data: {
+                        username: username,
+                        password: password
+                    },
+                    success: function(response) {
+                        // Xử lý phản hồi từ máy chủ
+                        if (response.success) {
+                            alert('Đăng nhập thành công!');
+                            window.location.href = '/DoAn/laptrinhweb/front-end/thongtincanhan.php';
+                        } else {
+                            alert('Đăng nhập thất bại: ' + response.message);
+                        }
+                    },
+                    error: function() {
+                        alert('Máy chủ không phản hồi. Vui lòng thử lại sau.');
+                    }
+                });
+            });
+        });
+    </script>
     <header style=" background-color: #FFDE59; display: flex; justify-content: center; height:135px; ">
         <a href="/DoAn/laptrinhweb/index.php"><img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET" style="height:100%;"></a>
     </header>
     <main style="display: flex; justify-content: center; align-items: center; gap: 100px; margin-top:0;">
         <div><img src="img/dnhap.png" style="width:100%; height:100% "></div>
         <div>
-            <h1>Đăng nhập</h1>
-            <form action="">
+            <form id="loginForm">
+                <h1>Đăng nhập</h1>
                 <label for="username">Tên đăng nhập:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username"><br>
+                <small id="username-error" style="color:red;"></small>
                 <br>
                 <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password">
                 <br>
                 <button type="submit">Đăng nhập</button>
             </form>
