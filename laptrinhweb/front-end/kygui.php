@@ -49,6 +49,66 @@
             /* Tạo hiệu ứng nhấn xuống */
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            // Kiểm tra Tên chủ
+            $('#ten').on('input', function() {
+                var ten = $(this).val().trim();
+                if (ten.length < 2 || !/[A-Za-zÀ-ỹ]/.test(ten)) {
+                    $(this).css('border-color', 'red');
+                } else {
+                    $(this).css('border-color', '');
+                }
+            });
+
+            // Kiểm tra SĐT
+            $('#phone').on('input', function() {
+                var sdt = $(this).val().trim();
+                var phonePattern = /^\d{10}$/;
+                if (!phonePattern.test(sdt)) {
+                    $(this).css('border-color', 'red');
+                    $('#phone-error').text('Số điện thoại phải là 10 chữ số.');
+                } else {
+                    $(this).css('border-color', '');
+                    $('#phone-error').text('');
+                }
+            });
+
+            // Kiểm tra Tên thú cưng
+            $('#tenpet').on('input', function() {
+                var tenpet = $(this).val().trim();
+                if (tenpet.length < 2 || !/[A-Za-zÀ-ỹ]/.test(tenpet)) {
+                    $(this).css('border-color', 'red');
+                } else {
+                    $(this).css('border-color', '');
+                }
+            });
+
+            // Kiểm tra giống loài
+            $('#giongloai').on('input', function() {
+                var giong = $(this).val().trim();
+                if (giong === '') {
+                    $(this).css('border-color', 'red');
+                } else {
+                    $(this).css('border-color', '');
+                }
+            });
+
+            // Kiểm tra ngày gửi và ngày trả
+            $('#ngaytra, #ngaygui').on('change', function() {
+                var ngaygui = $('#ngaygui').val();
+                var ngaytra = $('#ngaytra').val();
+                if (ngaygui && ngaytra && ngaygui >= ngaytra) {
+                    $('#ngaytra').css('border-color', 'red');
+                } else {
+                    $('#ngaytra').css('border-color', '');
+                }
+            });
+
+        });
+    </script>
 </head>
 
 <body>
@@ -62,8 +122,9 @@
             <form action="">
                 <label for="ten">Tên chủ:</label>
                 <input type="text" id="ten" name="ten" required>
-                <label for="sdt">Số điện thoại:</label>
-                <input type="tel" id="sdt" name="sdt" required pattern="[0-9]{10}" title="Vui lòng nhập số điện thoại 10 chữ số">
+                <label for="phone">Số điện thoại:</label>
+                <input type="text" id="phone" name="phone"><br>
+                <small id="phone-error" style="color:red;"></small>
                 <label for="tenpet">Tên thú cưng :</label>
                 <input type="text" id="tenpet" name="tenpet" required>
                 <label for="giongloai">Giống loài: </label>
