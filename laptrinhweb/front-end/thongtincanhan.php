@@ -110,11 +110,11 @@
         </style>
     </header>
     <main>
-        <div>
+        <div style="overflow: hidden;">
             <div id="logo">
                 <img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET">
             </div>
-            <div style="float: left;height: 200px;width: 70%;background-color: #FFF0B5; display: flex;align-items: center; justify-content: center; padding: 0 100px;">
+            <div style="float: left;height: 200px;width: 70%;background-color: #FFF0B5; display: flex;align-items: center; justify-content: space-between;padding: 0 100px;">
                 <div>Khách Hàng: Trần Văn C</div>
                 <button id="dxuat">Đăng xuất</button>
             </div>
@@ -132,7 +132,7 @@
                 background-color: #FFFAE4;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
                 padding: 0 100px;">
                 <div id="thongtin-canhan">
                     <h3>Thông tin cá nhân</h3>
@@ -146,7 +146,9 @@
             </div>
         </div>
     </main>
-    <?php include 'footer.php'; ?>
+    <div>
+        <?php include 'footer.php'; ?>
+    </div>
 </body>
 
 </html>

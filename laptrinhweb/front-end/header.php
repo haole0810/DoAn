@@ -207,15 +207,16 @@
          <nav>
              <ul id="menu">
                  <li><a href="/DoAn/laptrinhweb/index.php">TRANG CHỦ</a></li>
-                 <li><a href="/DoAn/laptrinhweb/front-end/gioithieu.php">GIỚI THIỆU</a></li>
+                 <li><a href="/DoAn/laptrinhweb/index.php?page=gioithieu">GIỚI THIỆU</a></li>
                  <li><a href="#">SẢN PHẨM</a>
                      <ul class="submenu">
-                         <li><a href="/DoAn/laptrinhweb/front-end/fooddog.php">Thức ăn cho chó</a></li>
-                         <li><a href="/DoAn/laptrinhweb/front-end/foodcat.php">Thức ăn cho mèo</a></li>
-                         <li><a href="/DoAn/laptrinhweb/front-end/phukien.php">Phụ kiện</a></li>
+                         <li><a href="/DoAn/laptrinhweb/index.php?page=fooddog">Thức ăn cho chó</a></li>
+                         <li><a href="/DoAn/laptrinhweb/index.php?page=foodcat">Thức ăn cho mèo</a></li>
+                         <li><a href="/DoAn/laptrinhweb/index.php?page=phukien">Phụ kiện</a></li>
                      </ul>
                  </li>
-                 <li><a href="/DoAn/laptrinhweb/front-end/kygui.php">KÝ GỬI</a></li>
+                 <li><a href="/DoAn/laptrinhweb/index.php?page=kygui">KÝ GỬI</a></li>
+
              </ul>
          </nav>
      </div>

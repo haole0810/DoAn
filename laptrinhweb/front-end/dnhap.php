@@ -56,6 +56,7 @@
     <script>
         $(document).ready(function() {
             $('#username').on('input', function() {
+                e.preventDefault();
                 var username = $(this).val().trim();
                 // Điều kiện: ít nhất 3 ký tự và phải có ít nhất 1 chữ cái
                 var dkname = /[A-Za-z]/.test(username);
@@ -83,7 +84,7 @@
                 }
                 // Gửi dữ liệu đến máy chủ (giả sử có một API để xử lý đăng nhập)
                 $.ajax({
-                    url: '/DoAn/laptrinhweb/api/login.php',
+                    url: '/DoAn/laptrinhweb/back-end/xlydnhap.php',
                     type: 'POST',
                     data: {
                         username: username,
@@ -109,7 +110,7 @@
         <a href="/DoAn/laptrinhweb/index.php"><img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET" style="height:100%;"></a>
     </header>
     <main style="display: flex; justify-content: center; align-items: center; gap: 100px; margin-top:0;">
-        <div><img src="img/dnhap.png" style="width:100%; height:100% "></div>
+        <div style="height: 620px; width: 645px"><img src="img/dnhap.png" style="width:100%; height:100% "></div>
         <div>
             <form id="loginForm">
                 <h1>Đăng nhập</h1>

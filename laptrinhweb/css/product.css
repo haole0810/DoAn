@@ -38,11 +38,17 @@
     font-family: Inter ;
     font-weight :bold;
     color: #ff0000;
+    margin-top: auto;
 }
 .nameproduct{
     font-family: Inter ;
     font-weight :17 ;
     color: #000000;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
 }
 .product-item:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);      /* Kế thừa màu từ phần tử cha */
@@ -61,4 +67,7 @@
     border-radius: 5px;
     padding-top: 4px; 
     border: none;
+}
+.Product{
+    margin-bottom: 20px;
 }

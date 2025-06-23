@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -6,165 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CUTEPETCUTEPET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/resetcss.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/breadcrumb.css">
     <link rel="stylesheet" href="css/product.css">
-    <style>
-        .banner {
-    display:block;
-    text-align: center;
-    margin:20px;
-    
-}
-.banner img {
-    width: 800px;
-    object-fit: cover;
-    
-}
-.Product > h2{
-    display: block;
-    margin:0px 15% ;
-    font-family: Roboto;
-    font-size: 25px;
-    font-weight: Bold;
-}
-hr {
-    border: 1px solid #ccc;
-}
-    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
-<body>
-    <?php include 'front-end/header.php'; ?>
-    <!-- Nội dung chính -->
-    <main>
-        <!-- Banner -->
-        <div class="banner">
-            <img src="front-end/img/Banner.png" alt="Banner CUTEPET">
-        </div>
-        <!-- Product -->
-        
-        <section class="Product">
-             <h2>SẢN PHẨM BÁN CHẠY
-                <hr>
-            </h2>
-            <div class="product-flex">
-                <button class="prev-btn">‹</button>
-                <div class="product-list">
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 1">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 1</h3>
-                        <p class="gia">Giá: 500.000 VNĐ</p>
-                    </div>
-                </a>
+<body style="font-family: 'Inter';">
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 2">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 2</h3>
-                        <p class="gia">Giá: 300.000 VNĐ</p>
-                    </div>
-                </a>
+    <?php
+    // Lấy tên trang từ URL
+    $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 3">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 3</h3>
-                        <p class="gia">Giá: 600.000 VNĐ</p>
-                    </div>
-                </a>
+    // Danh sách trang hợp lệ
+    $pages = [
+        'home' => 'front-end/home.php',
+        'gioithieu' => 'front-end/gioithieu.php',
+        'dangky' => 'front-end/dki.php',
+        'dangnhap' => 'front-end/dnhap.php',
+        'foodcat' => 'front-end/foodcat.php',
+        'fooddog' => 'front-end/fooddog.php',
+        'phukien' => 'front-end/phukien.php',
+        'thanhtoan' => 'front-end/thanhtoan.php',
+        'kygui' => 'front-end/kygui.php',
+        'giohang' => 'front-end/giohang.php',
+        'chitietsp' => 'front-end/chitietsp.php',
+        'thongtincanhan' => 'front-end/thongtincanhan.php'
+    ];
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 4">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 4</h3>
-                        <p class="gia">Giá: 400.000 VNĐ</p>
-                    </div>
-                </a>
+    // Các trang không cần header và footer
+    $noLayoutPages = ['dangnhap', 'dangky', 'kygui', 'thongtincanhan', 'thanhtoan'];
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 5">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 5</h3>
-                        <p class="gia">Giá: 550.000 VNĐ</p>
-                    </div>
-                </a>
+    if (array_key_exists($page, $pages)) {
+        if (!in_array($page, $noLayoutPages)) {
+            include 'front-end/header.php';
+        } else {
+            echo "<!-- Header file not found! -->";
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 6">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 6</h3>
-                        <p class="gia">Giá: 350.000 VNĐ</p>
-                    </div>
-                </a>
+        include $pages[$page];
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 7">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 7</h3>
-                        <p class="gia">Giá: 450.000 VNĐ</p>
-                    </div>
-                </a>
+        if (!in_array($page, $noLayoutPages)) {
+            include 'front-end/footer.php';
+        } else {
+            echo "<!-- Header file not found! -->";
+        }
+    } else {
+        echo "<p style='text-align:center; color:red;'>Không tìm thấy trang yêu cầu.</p>";
+    }
+    ?>
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 8">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 8</h3>
-                        <p class="gia">Giá: 400.000 VNĐ</p>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 9">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 9</h3>
-                        <p class="gia">Giá: 480.000 VNĐ</p>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 10">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 10</h3>
-                        <p class="gia">Giá: 320.000 VNĐ</p>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 11">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 11</h3>
-                        <p class="gia">Giá: 390.000 VNĐ</p>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 12">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 12</h3>
-                        <p class="gia">Giá: 520.000 VNĐ</p>
-                    </div>
-                </a>
-                </div>
-                <button class="next-btn">›</button>
-            </div>
-        </section>
-    </main>
-<?php include 'front-end/footer.php'; ?>
 </body>
 
 </html>

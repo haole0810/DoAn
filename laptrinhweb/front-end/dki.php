@@ -126,7 +126,7 @@
 
                 // Nếu hợp lệ → Gửi AJAX
                 $.ajax({
-                    url: '/DoAn/laptrinhweb/api/dki.php',
+                    url: '/DoAn/laptrinhweb/back-end/xlydki.php',
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -138,7 +138,7 @@
                     success: function(response) {
                         if (response.success) {
                             alert('Đăng ký thành công!');
-                            window.location.href = '/DoAn/laptrinhweb/front-end/thongtincanhan.php';
+                            window.location.href = '/DoAn/laptrinhweb/front-end/dnhap.php';
                         } else {
                             alert('Đăng ký thất bại: ' + response.message);
                         }
@@ -157,7 +157,7 @@
         <a href="/DoAn/laptrinhweb/index.php"><img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET" style="height:100%;"></a>
     </header>
     <main style="display: flex; justify-content: center; align-items: center; gap: 100px; margin-top:0; ">
-        <div><img src="img/dki.png" style="width:100%; height:100% "></div>
+        <div style="height: 620px; width: 645px"><img src="img/dki.png" style="width:100%; height:100% "></div>
         <div>
             <form action="" id='dki'>
                 <h1>Đăng kí</h1>
