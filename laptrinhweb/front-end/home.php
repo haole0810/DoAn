@@ -1,152 +1,219 @@
-<style>
-    .banner {
-        display: block;
-        text-align: center;
-        margin: 20px;
+<?php
+include 'connect.php'; // Kết nối đến cơ sở dữ liệu
+// Lấy sản phẩm loại 'dog'
+$sql = "SELECT id,ten,gia,hinhanh FROM sanpham WHERE loai = 'dog'";
+$result = $conn->query($sql);
 
-    }
+$products = [];
+while ($row = $result->fetch_assoc()) {
+    $products[] = [
+        "id" => $row["id"],
+        "ten" => $row["ten"],
+        "gia" => number_format($row["gia"], 0, ',', '.'),
+        "hinhanh" => $row["hinhanh"]
+    ];
+}
+?>
+<!DOCTYPE html>
+<html lang="vi">
 
-    .banner img {
-        width: 800px;
-        object-fit: cover;
+<head>
+    <meta charset="UTF-8">
+    <title>Sản phẩm bán chạy</title>
+    <style>
+        .banner {
+            position: relative;
+            width: 800px;
+            height: 450px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
 
-    }
+        .banner img {
+            position: absolute;
+            opacity: 0;
+            width: 800px;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+        }
 
-    .Product>h2 {
-        display: block;
-        margin: 0px 15%;
-        font-family: Roboto;
-        font-size: 25px;
-        font-weight: Bold;
-    }
+        .banner img.active {
+            opacity: 1;
+            z-index: 1;
+        }
 
-    hr {
-        border: 1px solid #ccc;
-    }
-</style>
-<main>
-    <!-- Banner -->
-    <div class="banner">
-        <img src="front-end/img/Banner.png" alt="Banner CUTEPET">
-    </div>
-    <!-- Product -->
+        .Product>h2 {
+            margin: 0px 15%;
+            font-family: Roboto;
+            font-size: 25px;
+            font-weight: bold;
+        }
 
-    <section class="Product">
-        <h2>SẢN PHẨM BÁN CHẠY
-            <hr>
-        </h2>
-        <div class="product-flex">
-            <button class="prev-btn">‹</button>
-            <div class="product-list">
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 1">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 1</h3>
-                        <p class="gia">Giá: 500.000 VNĐ</p>
-                    </div>
-                </a>
+        hr {
+            border: 1px solid #ccc;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 2">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 2</h3>
-                        <p class="gia">Giá: 300.000 VNĐ</p>
-                    </div>
-                </a>
+        .product-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 3">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 3</h3>
-                        <p class="gia">Giá: 600.000 VNĐ</p>
-                    </div>
-                </a>
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 4">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 4</h3>
-                        <p class="gia">Giá: 400.000 VNĐ</p>
-                    </div>
-                </a>
+        .product-item {
+            width: 180px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background: #f9f9f9;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 5">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 5</h3>
-                        <p class="gia">Giá: 550.000 VNĐ</p>
-                    </div>
-                </a>
+        .product-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 6">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 6</h3>
-                        <p class="gia">Giá: 350.000 VNĐ</p>
-                    </div>
-                </a>
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 7">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 7</h3>
-                        <p class="gia">Giá: 450.000 VNĐ</p>
-                    </div>
-                </a>
+        .pagination button {
+            margin: 0 5px;
+            padding: 6px 12px;
+            border: none;
+            background: #eee;
+            cursor: pointer;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 8">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 8</h3>
-                        <p class="gia">Giá: 400.000 VNĐ</p>
-                    </div>
-                </a>
+        .pagination button.active {
+            background: #666;
+            color: white;
+            font-weight: bold;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 9">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 9</h3>
-                        <p class="gia">Giá: 480.000 VNĐ</p>
-                    </div>
-                </a>
+        .product-link {
+            display: none;
+        }
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 10">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 10</h3>
-                        <p class="gia">Giá: 320.000 VNĐ</p>
-                    </div>
-                </a>
+        .prev-btn,
+        .next-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 11">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 11</h3>
-                        <p class="gia">Giá: 390.000 VNĐ</p>
-                    </div>
-                </a>
+<body>
 
-                <a href="#">
-                    <div class="product-item">
-                        <div><img src="img/Cát Vệ Sinh Cho Mèo - Cát Đậu Nành ACROPET - TOFU 5L.webp" alt="Sản phẩm 12">
-                        </div>
-                        <h3 class="nameproduct">Sản phẩm 12</h3>
-                        <p class="gia">Giá: 520.000 VNĐ</p>
-                    </div>
-                </a>
-            </div>
-            <button class="next-btn">›</button>
+    <main>
+        <!-- Banner -->
+        <div class="banner">
+            <img src="front-end/img/Banner.png" alt="Banner CUTEPET">
+            <img src="front-end/img/Banner2.jpg" alt="Banner CUTEPET">
+            <img src="front-end/img/Banner3.png" alt="Banner CUTEPET">
         </div>
-    </section>
-</main>
+        <script>
+            const images = document.querySelectorAll('.banner img');
+            let current = 0;
+
+            function showNextSlide() {
+                images[current].classList.remove('active');
+                current = (current + 1) % images.length;
+                images[current].classList.add('active');
+            }
+
+            // Khởi động ảnh đầu tiên
+            images[0].classList.add('active');
+            setInterval(showNextSlide, 1000); // 3 giây chuyển ảnh
+        </script>
+
+        <!-- Product -->
+        <section class="Product">
+            <h2>SẢN PHẨM BÁN CHẠY
+                <hr>
+            </h2>
+
+            <div class="product-flex">
+                <button class="prev-btn">‹</button>
+                <div class="product-list" id="product-list">
+                    <?php foreach ($products as $p): ?>
+                        <a href="index.php?page=chitietsp&id=<?= $p["id"] ?>" class="product-link">
+                            <div class="product-item">
+                                <div><img src="<?= $p["hinhanh"] ?>" alt="<?= $p["ten"] ?>"></div>
+                                <h3 class="nameproduct"><?= $p["ten"] ?></h3>
+                                <p class="gia">Giá: <?= $p["gia"] ?> VNĐ</p>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+                <button class="next-btn">›</button>
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+        </section>
+    </main>
+
+    <!-- JS Phân trang -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const itemsPerPage = 10;
+            const products = document.querySelectorAll('.product-link');
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(products.length / itemsPerPage);
+            let currentPage = 1;
+
+            function showPage(page) {
+                const start = (page - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+                products.forEach((item, index) => {
+                    item.style.display = (index >= start && index < end) ? 'inline-block' : 'none';
+                });
+                renderPagination();
+            }
+
+            function renderPagination() {
+                pagination.innerHTML = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    const btn = document.createElement('button');
+                    btn.textContent = i;
+                    btn.className = (i === currentPage) ? 'active' : '';
+                    btn.onclick = () => {
+                        currentPage = i;
+                        showPage(currentPage);
+                    };
+                    pagination.appendChild(btn);
+                }
+            }
+
+            document.querySelector('.prev-btn').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            document.querySelector('.next-btn').addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+
+            showPage(currentPage);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 // Kết nối CSDL
-$conn = new mysqli('localhost', 'root', '', 'cutepet');
+$conn = new mysqli('localhost', 'root', '', 'cutepet2');
 $conn->set_charset("utf8");
 
 if ($conn->connect_error) {

@@ -1,8 +1,9 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 
 // Kết nối CSDL
-$conn = new mysqli('localhost', 'root', '', 'cutepet');
+$conn = new mysqli('localhost', 'root', '', 'cutepet2');
 $conn->set_charset("utf8");
 
 if ($conn->connect_error) {
@@ -23,6 +24,10 @@ $result = $stmt->get_result();
 
 // Kiểm tra kết quả
 if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+    $_SESSION['user_id'] = $user['id'];           // hoặc cột ID bạn dùng
+    $_SESSION['username'] = $user['username'];     // nếu cần
+
     echo json_encode(['success' => true]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Sai tên đăng nhập hoặc mật khẩu']);
