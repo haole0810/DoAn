@@ -15,21 +15,40 @@
                 <img src="/DoAn/laptrinhweb/front-end/img/dog-cat.jpg" style=" width:80%;object-fit: cover;" alt="Cute Pet Image">
             </div>
         </div>
+        <style>
+            .branch {
+                text-decoration: none;
+                color: #000;
+                font-weight: bold;
+                font-size: large;
+            }
+        </style>
+
         <div style="display: flex; align-items: center; justify-content: center; margin-top: 20px; gap: 20px; ">
             <!-- Iframe bản đồ -->
             <div>
                 <iframe id="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.088706757823!2d106.71414257465577!3d10.804517789345939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175293dceb22197%3A0x755bb0f39a48d4a6!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBHaWFvIFRow7RuZyBW4bqtbiBU4bqjaSBUaMOgbmggUGjhu5EgSOG7kyBDaMOtIE1pbmggLSBDxqEgc-G7nyAx!5e0!3m2!1svi!2s!4v1751074585023!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div style="border: 1px solid;  padding: 15px;">
-                <p style="display: flex; justify-content: center; margin: 10px; ">Hãy đến với Cute Pet </p>
-                <p style="line-height: 3; "> Chi nhánh:123 Phường Hòa Bình, Quận 1, TP. Hồ Chí Minh<br>
-                    Chi nhánh: 45A Phường Bình Yên, Quận 2, TP. Đà Nẵng<br>
-                    Chi nhánh: 789 Phường An Lạc, Quận 3, TP. Hà Nội<br>
-                    Chi nhánh: 321 Phường Thanh Bình, Quận 4, TP. Cần Thơ<br>
-                    Chi nhánh: 2 Đường Võ Oanh, Quận Bình Thạnh, TP. Hồ Chí Minh
+            <div style="border: 1px solid; padding: 15px;">
+                <p style="text-align: center; margin: 10px;">Hãy đến với Cute Pet</p>
+                <p style="line-height: 3;">
+                    <a class="branch" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.088706757823!2d106.71414257465577!3d10.804517789345939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175293dceb22197%3A0x755bb0f39a48d4a6!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBHaWFvIFRow7RuZyBW4bqtbiBU4bqjaSBUaMOgbmggUGjhu5EgSOG7kyBDaMOtIE1pbmggLSBDxqEgc-G7nyAx!5e0!3m2!1svi!2s!4v1751074585023!5m2!1svi!2s">02 Võ Oanh, Phường 25, Bình Thạnh, Hồ Chí Minh, Việt Nam</a><br>
+                    <a class="branch" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15676.35483648852!2d106.70641774211742!3d10.804517608225385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527d6a28f0641%3A0x9f730fe7bfad29fd!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBHaWFvIHRow7RuZyB24bqtbiB04bqjaSBUUCBIQ00gVVRIIGPGoSBz4bufIDI!5e0!3m2!1svi!2s!4v1751074751988!5m2!1svi!2s"> 10 Đ. 12, Bình Khánh, Thủ Đức, Hồ Chí Minh, Việt Nam</a><br>
+                    <a class="branch" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15673.148864820329!2d106.59906348715822!3d10.865745499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b2a11844fb9%3A0xbed3d5f0a6d6e0fe!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBHaWFvIFRow7RuZyBW4bqtbiBU4bqjaSBUaMOgbmggUGjhu5EgSOG7kyBDaMOtIE1pbmggKFVUSCkgLSBDxqEgc-G7nyAz!5e0!3m2!1svi!2s!4v1751075068365!5m2!1svi!2s">70 Đ. Tô Ký, Tân Chánh Hiệp, Quận 12, Hồ Chí Minh, Việt Nam</a><br>
+                    <a class="branch" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.472366478932!2d106.59507047668711!3d10.851631761716929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752a467e5e2d2b%3A0x11be66d3631b4bab!2zVHLGsOG7nW5nIFRIUFQgQsOgIMSQaeG7g20!5e0!3m2!1svi!2s!4v1751075182339!5m2!1svi!2s">7 Nguyễn Thị Sóc, Ap Bac Lân, Hóc Môn, Hồ Chí Minh, Việt Nam</a><br>
+                    <a class="branch" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.254156486735!2d106.61219747465682!3d10.868263689286183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b76fe3b7037%3A0x5b88f7b056c26590!2zVHLGsOG7nW5nIFRIUFQgTmd1eeG7hW4gSOG7r3UgQ-G6p3U!5e0!3m2!1svi!2s!4v1751075319153!5m2!1svi!2s">Đ. Tô Ký, Tân Chánh Hiệp, Hóc Môn, Hồ Chí Minh, Việt Nam</a>
                 </p>
             </div>
+
         </div>
-        <div class=""></div>
+        <script>
+            document.querySelectorAll('.branch').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault(); // Ngăn không cho chuyển trang
+                    const mapUrl = this.getAttribute('data-map');
+                    document.getElementById('map-frame').src = mapUrl;
+                });
+            });
+        </script>
     </div>
 </main>
