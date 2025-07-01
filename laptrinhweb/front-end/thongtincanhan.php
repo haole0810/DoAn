@@ -111,19 +111,19 @@
     </header>
     <?php include 'connect.php';
     session_start();
-    if (!isset($_SESSION['user_id'])])) {
+    if (!isset($_SESSION['user_id'])) {
         header('Location: /DoAn/laptrinhweb/front-end/dnhap.php');
-        exit(); 
+        exit();
     }
-        $user_id = $_SESSION['user_id'];
-$sql = "SELECT * FROM user WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
+    $user_id = $_SESSION['user_id'];
+    $sql = "SELECT * FROM user WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
 
-     ?>
+    ?>
 
     <main>
         <div style="overflow: hidden;">

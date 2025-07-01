@@ -17,7 +17,7 @@ $email = trim($_POST['email']);
 $phone = trim($_POST['phone']);
 
 // Kiểm tra tài khoản đã tồn tại chưa
-$sql_check = "SELECT * FROM user WHERE username = ?";
+$sql_check = "SELECT username,email,sdt FROM user WHERE username = ?";
 $stmt = $conn->prepare($sql_check);
 $stmt->bind_param("s", $username);
 $stmt->execute();
