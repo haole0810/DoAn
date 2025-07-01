@@ -1,24 +1,22 @@
 <?php require("connect.php") ?>
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="container">
         <div class="top-bar">Giờ làm việc: 8h00 đến 5h30 (Cả thứ 7 và Chủ Nhật)</div>
-        <div class="logo">
-            <img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET" style="width: 150px;object-fit: contain;">
+        <div class="logo" style="text-align: center; position: relative;}">
+            <img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 150px;object-fit: contain;">
         </div>
         <div class="header-right">
             <div class="info">
-                <p>Nguyễn Văn A</p>
                 <?php
                 $result = $link->query("SELECT * FROM user");
-                while ($row = $result->fetch_assoc()) {
+                if ($row = $result->fetch_assoc()) {
+                    echo "<p>{$row['username']}</p>";
                     echo "<span>{$row['quyen']}</span>";
                 }
                 ?>
@@ -38,7 +36,7 @@
             $section = $_GET['section'] ?? 'product';
 
             if ($section === 'product') {
-                echo '<div class="header-row">
+                echo '<div class="content-head">
                         <h2>Quản lý sản phẩm</h2>
                         <button class="add">Thêm sản phẩm</button>
                         </div>';
@@ -58,9 +56,8 @@
                 }
                 echo "</table>";
             } elseif ($section === 'order') {
-                echo '<div class="header-row">
+                echo '<div class="content-head">
                         <h2>Quản lý đơn hàng</h2>
-                        <button class="add">Thêm đơn hàng</button>
                         </div>';
                 echo '<table>
                         <tr>
@@ -79,7 +76,7 @@
                 }
                 echo "</table>";
             } elseif ($section === 'consignment') {
-                echo '<div class="header-row"><h2>Quản lý ký gửi</h2></div>';
+                echo '<div class="content-head"><h2>Quản lý ký gửi</h2></div>';
                 echo '<table>
                         <tr>
                             <th>ID</th> <th>Username</th> <th>SĐT</th> <th>Tên thú cưng</th> <th>Giống loài</th> <th>Ngày gửi</th> <th>Ngày trả</th> <th>Ngày tạo</th> <th>Chỉnh sửa</th>
@@ -100,7 +97,7 @@
                 }
                 echo "</table>";
             } elseif ($section === 'account') {
-                echo '<div class="header-row"><h2>Quản lý tài khoản</h2></div>';
+                echo '<div class="content-head"><h2>Quản lý tài khoản</h2></div>';
                 echo '<table>
                         <tr>
                             <th>ID</th> <th>Tên người dùng</th> <th>SĐT</th> <th>Email</th> <th>Địa chỉ</th> <th>Quyền hạn</th> <th>Chỉnh sửa</th>
@@ -123,5 +120,4 @@
         </div>
     </div>
 </body>
-
 </html>

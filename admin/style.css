@@ -11,10 +11,10 @@
     align-items: center;
 }
 .logo {
-    background-color: rgba(255, 223, 65, 0.919);
-    height: 180px;
-    width: 16%;
-    float: left; 
+  float: left;
+  width: 16%;
+  height: 180px;
+  background-color: rgba(255, 223, 65, 0.919);
 }
 .header-right {
     background-color: rgb(255, 212, 138);
@@ -129,9 +129,4 @@ table th, #name_acc {
 }
 body{
     margin:0px ;
-}
-.logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
