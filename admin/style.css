@@ -91,6 +91,7 @@ h2 {
     font-weight: bold;
     margin-bottom: 9px;
     margin-top: 15px;
+    margin-left:10px;
     cursor: pointer;
     transition: transform 0.4s;
 }
@@ -125,4 +126,12 @@ table th, #name_acc {
 #delete:hover, #modify:hover {
     color: red;
     cursor: pointer;
+}
+body{
+    margin:0px ;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
