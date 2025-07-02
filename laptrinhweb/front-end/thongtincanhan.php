@@ -56,7 +56,9 @@
                 align-items: center;
                 font-size: 20px;
             }
-
+            .cont:hover {
+                cursor: pointer;
+            }
             a {
                 all: unset;
             }
@@ -139,10 +141,10 @@
             </div>
             <div id="menu">
                 <div>
-                    <div><a href="/DoAn/laptrinhweb/index.php"><img src="/DoAn/laptrinhweb/front-end/img/home.png"> Trang chủ</a></div>
+                    <div class="cont"><a href="/DoAn/laptrinhweb/index.php"><img src="/DoAn/laptrinhweb/front-end/img/home.png"> Trang chủ</a></div>
                 </div>
                 <div>
-                    <div><img src="/DoAn/laptrinhweb/front-end/img/user1.png"> Thông tin </div>
+                    <div class="cont"><img src="/DoAn/laptrinhweb/front-end/img/user1.png"> Thông tin </div>
                 </div>
             </div>
             <div style="float: left;
