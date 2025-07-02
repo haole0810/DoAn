@@ -373,3 +373,5 @@ INSERT INTO kygui (ten_chu, sdt, ten_thucung, giong_loai, ngay_gui, ngay_tra) VA
 INSERT INTO thongke_banchay (id_sanpham, thoigian, loai_thongke, soluong) VALUES
 (1, '2025-06-24', 'ngay', 5),
 (2, '2025-06-24', 'ngay', 8);
+ALTER TABLE user
+ADD hoten VARCHAR(100);

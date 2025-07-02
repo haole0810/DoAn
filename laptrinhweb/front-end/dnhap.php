@@ -56,7 +56,6 @@
     <script>
         $(document).ready(function() {
             $('#username').on('input', function() {
-                e.preventDefault();
                 var username = $(this).val().trim();
                 // Điều kiện: ít nhất 3 ký tự và phải có ít nhất 1 chữ cái
                 var dkname = /[A-Za-z]/.test(username);
@@ -76,13 +75,13 @@
                 }
             });
             $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
                 var username = $('#username').val();
                 var password = $('#password').val();
                 if (!username || !password) {
                     alert('Vui lòng điền đầy đủ thông tin đăng nhập.');
                     return;
                 }
-                // Gửi dữ liệu đến máy chủ (giả sử có một API để xử lý đăng nhập)
                 $.ajax({
                     url: '/DoAn/laptrinhweb/back-end/xlydnhap.php',
                     type: 'POST',
@@ -94,7 +93,7 @@
                         // Xử lý phản hồi từ máy chủ
                         if (response.success) {
                             alert('Đăng nhập thành công!');
-                            window.location.href = '/DoAn/laptrinhweb/front-end/thongtincanhan.php';
+                            window.location.href = '/DoAn/laptrinhweb/index.php';
                         } else {
                             alert('Đăng nhập thất bại: ' + response.message);
                         }

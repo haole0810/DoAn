@@ -2,33 +2,29 @@
 session_start();
 header('Content-Type: application/json');
 
-// Kết nối CSDL
-$conn = new mysqli('localhost', 'root', '', 'cutepet2');
-$conn->set_charset("utf8");
+include '../connect.php';
 
-if ($conn->connect_error) {
-    echo json_encode(['success' => false, 'message' => 'Kết nối CSDL thất bại']);
-    exit;
-}
-
-// Nhận dữ liệu từ AJAX
 $username = trim($_POST['username']);
 $password = trim($_POST['password']);
 
-// Truy vấn người dùng
-$sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+$sql = "SELECT * FROM user WHERE username = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $username, $password);
+$stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
 
 // Kiểm tra kết quả
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
-    $_SESSION['user_id'] = $user['id'];           // hoặc cột ID bạn dùng
-    $_SESSION['username'] = $user['username'];     // nếu cần
-
-    echo json_encode(['success' => true]);
+    if (md5($password) === $user['password']) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        setcookie('user_id', $user['id'], time() + (7 * 24 * 60 * 60), '/');
+        setcookie('username', $user['username'], time() + (7 * 24 * 60 * 60), '/');
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Sai mật khẩu']);
+    }
 } else {
     echo json_encode(['success' => false, 'message' => 'Sai tên đăng nhập hoặc mật khẩu']);
 }

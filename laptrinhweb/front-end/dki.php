@@ -133,7 +133,8 @@
                         username: username,
                         password: password,
                         email: email,
-                        phone: phone
+                        phone: phone,
+                        hoten: $('#hoten').val().trim()
                     },
                     success: function(response) {
                         if (response.success) {
@@ -161,6 +162,9 @@
         <div>
             <form action="" id='dki'>
                 <h1>Đăng kí</h1>
+                <label for="hoten">Tên khách hàng:</label>
+                <input type="text" id="hoten" name="hoten"><br>
+
                 <label for="username">Tên đăng kí:</label>
                 <input type="text" id="username" name="username"><br>
                 <small id="username-error" style="color:red;"></small>

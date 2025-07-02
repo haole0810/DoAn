@@ -109,7 +109,7 @@
             }
         </style>
     </header>
-    <?php include 'connect.php';
+    <?php include '../connect.php';
     session_start();
     if (!isset($_SESSION['user_id'])) {
         header('Location: /DoAn/laptrinhweb/front-end/dnhap.php');
@@ -127,12 +127,15 @@
 
     <main>
         <div style="overflow: hidden;">
-            <div id="logo">
-                <img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET">
-            </div>
+
+            <a href="/DoAn/laptrinhweb/index.php" style="text-decoration: none;">
+                <div id="logo">
+                    <img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET">
+                </div>
+            </a>
             <div style="float: left;height: 200px;width: 70%;background-color: #FFF0B5; display: flex;align-items: center; justify-content: space-between;padding: 0 100px;">
-                <div>Khách Hàng: Trần Văn C</div>
-                <button id="dxuat">Đăng xuất</button>
+                <div>Khách Hàng: <?= $user['hoten'] ?></div>
+                <a href="/DoAn/laptrinhweb/back-end/dxuat.php">Đăng xuất</a>
             </div>
             <div id="menu">
                 <div>
@@ -152,12 +155,11 @@
                 padding: 0 100px;">
                 <div id="thongtin-canhan">
                     <h3>Thông tin cá nhân</h3>
-                    <p><strong>Họ tên:</strong> Trần Văn C</p>
-                    <p><strong>Số điện thoại:</strong> 0901234567</p>
-                    <p><strong>Email:</strong> tranvanc@example.com</p>
-                    <p><strong>Giới tính:</strong> Nam</p>
-                    <p><strong>Ngày sinh:</strong> 01/01/2000</p>
-                    <p><strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    <p><strong>Họ tên:</strong> <?= $user['hoten'] ?></p>
+                    <p><strong>Tên đăng nhập:</strong> <?= $user['username'] ?></p>
+                    <p><strong>Số điện thoại:</strong> <?= $user['sdt'] ?></p>
+                    <p><strong>Email:</strong> <?= $user['email'] ?></p>
+                    <p><strong>Địa chỉ:</strong> <?= $user['diachi'] ?></p>
                 </div>
             </div>
         </div>
