@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+        header("Location: /DoAn/laptrinhweb/front-end/dnhap.php");
+        exit;
+    }   
+?>
 <?php require("connect.php") ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -21,7 +28,7 @@
                 }
                 ?>
             </div>
-            <button class="log_out">Đăng xuất</button>
+            <a href="../laptrinhweb/back-end/dxuat.php" class="log_out" style="text-decoration: none;">Đăng xuất</a>
         </div>
 
         <div class="menu">

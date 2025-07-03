@@ -19,9 +19,10 @@ if ($result->num_rows > 0) {
     if (md5($password) === $user['password']) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['quyen'];
         setcookie('user_id', $user['id'], time() + (7 * 24 * 60 * 60), '/');
         setcookie('username', $user['username'], time() + (7 * 24 * 60 * 60), '/');
-        echo json_encode(['success' => true]);
+        echo json_encode(['success' => true, 'role' => $user['quyen']]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Sai mật khẩu']);
     }

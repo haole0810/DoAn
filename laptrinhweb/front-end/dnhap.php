@@ -92,7 +92,15 @@
                     success: function(response) {
                         // Xử lý phản hồi từ máy chủ
                         if (response.success) {
+
                             window.location.href = '/DoAn/laptrinhweb/index.php';
+
+                            if (response.role === 'admin') {
+                                window.location.href = '/DoAn/admin/index.php';
+                            } else {
+                                window.location.href = '/DoAn/laptrinhweb/index.php';
+                            }
+
                         } else {
                             alert('Đăng nhập thất bại: ' + response.message);
                         }
