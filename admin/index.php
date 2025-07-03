@@ -32,10 +32,10 @@
         </div>
 
         <div class="menu">
-            <a href="index.php?section=product" class="<?php if (!isset($_GET['section']) || $_GET['section'] == 'product') echo 'active'; ?>">Sản phẩm</a>
-            <a href="index.php?section=order" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'order') echo 'active'; ?>">Đơn hàng</a>
-            <a href="index.php?section=consignment" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'consignment') echo 'active'; ?>">Đơn ký gửi</a>
-            <a href="index.php?section=account" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'account') echo 'active'; ?>">Tài khoản</a>
+            <a href="index.php?section=product" class="<?php if (!isset($_GET['section']) || $_GET['section'] == 'product') echo 'active'; ?>">&nbsp;&nbsp;&nbsp;&nbsp;<img src="../img/box.png" style="width:38px"><br/>Sản phẩm</a>
+            <a href="index.php?section=order" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'order') echo 'active'; ?>"><img src="../img/order/order_.png" style="margin-bottom: -18px; margin-top: -18px"><br/>Đơn hàng</a>
+            <a href="index.php?section=consignment" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'consignment') echo 'active'; ?>"><img src="../img/kygui/consign_.png" style="margin-bottom: -18px; margin-top: -18px"><br/>Đơn ký gửi</a>
+            <a href="index.php?section=account" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'account') echo 'active'; ?>"><img src="../img/account/user_.png" style="margin-bottom: -18px; margin-top: -18px"><br/>Tài khoản</a>
         </div>
 
         <div class="content" id="main-content">
@@ -45,7 +45,7 @@
             if ($section === 'product') {
                 echo '<div class="content-head">
                 <h2>Quản lý sản phẩm</h2>
-                <button class="add" onclick="window.location.href=\'product/add_product.php\'">Thêm sản phẩm</button>
+                <button class="add" onclick="window.location.href=\'product/add_product.php\'"><img src="../img/addproduct/add_.png">Thêm sản phẩm</button>
                 </div>';
                 echo '<table>
                         <tr>
@@ -61,7 +61,7 @@
                     <td>
                         <a href='product/del_product.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png'></a> 
                         | 
-                        <a href='product/edit_product.php?id={$row['id']}'><img src='../img/edit/edit_.png' style='bgcolor: black,'></a>
+                        <a href='product/edit_product.php?id={$row['id']}'><img src='../img/edit/edit_.png'></a>
                     </td>
                     </tr>";
                 }
@@ -83,9 +83,9 @@
                             <td>{$row['ngaydat']}</td>
                             <td>{$row['trangthai']}</td>
                             <td>
-                                <a href='order/del_order.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a> 
+                                <a href='order/del_order.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png'></a> 
                                 | 
-                                <a href='order/edit_order.php?id={$row['id']}'>Sửa</a>
+                                <a href='order/edit_order.php?id={$row['id']}'><img src='../img/edit/edit_.png'></a>
                             </td>
                         </tr>";
                 }
@@ -108,9 +108,9 @@
                             <td>{$row['ngay_tra']}</td>
                             <td>{$row['ngay_dangky']}</td>
                             <td>
-                                <a href='consignment/del_consign.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a> 
+                                <a href='consignment/del_consign.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png'></a> 
                                 | 
-                                <a href='consignment/edit_consign.php?id={$row['id']}'>Sửa</a>
+                                <a href='consignment/edit_consign.php?id={$row['id']}'><img src='../img/edit/edit_.png'></a>
                             </td>
                         </tr>";
                 }
@@ -131,9 +131,9 @@
                             <td>{$row['diachi']}</td>
                             <td>{$row['quyen']}</td>
                             <td>
-                                <a href='account/del_user.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a> 
+                                <a href='account/del_user.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png'></a> 
                                 | 
-                                <a href='account/edit_user.php?id={$row['id']}'>Sửa</a>
+                                <a href='account/edit_user.php?id={$row['id']}'><img src='../img/edit/edit_.png'></a>
                             </td>
                         </tr>";
                 }

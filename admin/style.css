@@ -53,15 +53,20 @@
     float: left;
 }
 .menu a {
+    width: 42%;
     display: block;
-    font-size: medium;
+    font-size: large;
     color: rgb(255, 255, 255); 
-    margin: 15% 10%;
+    margin: 10% 15%;
     padding: 3% 20%;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     transition: transform 0.4s ease;
+}
+.menu img {
+    width: 70%;
+    
 }
 .menu a:hover, .menu a.active {
     background-color: #ffd859;
@@ -78,13 +83,14 @@
 .content-head {
     display: flex;
     align-items: center;
-    gap: 67%;
+    gap: 57%;
 }
 h2 {
     margin-left: 50px;
     margin-top: 25px;
 }
 .add {
+    width: 17%;
     font-size: 16px;
     justify-content: right;
     background-color: #fcdc58;
@@ -97,6 +103,14 @@ h2 {
     margin-left:10px;
     cursor: pointer;
     transition: transform 0.4s;
+}
+.add img {
+    width: 15%;
+    height: 15%;
+    vertical-align: middle;
+}
+.add img:hover{
+    filter: invert(1);
 }
 .add:hover {
     color: #c96a05c7;
@@ -126,9 +140,10 @@ table th {
 table th, #name_acc {
     white-space: nowrap;
 }
-#delete:hover, #modify:hover {
-    color: red;
-    cursor: pointer;
+table img {
+    width: 20%;
+    height: 20%;
+  vertical-align: middle;
 }
 body{
     margin:0px ;
