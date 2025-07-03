@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Xóa session và cookie nhưng **chưa redirect ngay**
 session_unset();
 session_destroy();
 
@@ -18,7 +16,7 @@ setcookie('user_id', '', time() - 1, '/');
     <script>
         setTimeout(() => {
             window.location.href = "/DoAn/laptrinhweb/index.php";
-        }, 2000);
+        }, 500);
     </script>
     <style>
         body {

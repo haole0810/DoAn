@@ -110,7 +110,7 @@
     <div style="height: 620px; width: 645px"><img src="/DoAn/laptrinhweb/front-end/img/dnhap.png" style="width:100%; height:100% "></div>
     <div>
         <h1>Ký Gửi</h1>
-        <form action="">
+        <form action="/DoAn/laptrinhweb/back-end/xulykygui.php" method="POST">
             <label for="ten">Tên chủ:</label>
             <input type="text" id="ten" name="ten" required>
             <label for="phone">Số điện thoại:</label>
