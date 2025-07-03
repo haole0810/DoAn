@@ -92,7 +92,6 @@
                     success: function(response) {
                         // Xử lý phản hồi từ máy chủ
                         if (response.success) {
-                            alert('Đăng nhập thành công!');
                             window.location.href = '/DoAn/laptrinhweb/index.php';
                         } else {
                             alert('Đăng nhập thất bại: ' + response.message);

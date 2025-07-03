@@ -1,4 +1,4 @@
-<main style="display: flex; flex-direction: column; align-items: center; margin: 110px 10% 20px 10%;">
+<main style="display: flex; flex-direction: column; align-items: center;">
     <h1 class="gt" style=" font-size: 40px; font-weight: bold "> Giới Thiệu Về Cute Pet </h1>
     <div class="dgt" style="font-size: 25px;">
         <div style="margin: 25px;">

@@ -15,7 +15,7 @@
 
 </head>
 
-<body style="font-family: 'Inter';">
+<body style="font-family: 'Inter'; margin: auto;">
 
     <?php
     // Lấy tên trang từ URL

@@ -7,7 +7,9 @@ if (!isset($_SESSION['username'])) {
         $_SESSION['username'] = 'guest_' . session_id();
     }
 }
-
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
 $username = $_SESSION['username'];
 ?>
 
@@ -219,9 +221,7 @@ $username = $_SESSION['username'];
         <div class="search-bar">
             <input type="text" placeholder="Bạn cần tìm gì?">
             <button type="submit" id="btnsearch"><img src="/DoAn/laptrinhweb/front-end/img/search.png" alt="tìm"></button>
-            <button class="cart-button" aria-label="Mở giỏ hàng">
-                <img src="/DoAn/laptrinhweb/front-end/img/cart.png" alt="Giỏ hàng">
-            </button>
+            <a href="/DoAn/laptrinhweb/index.php?page=giohang"><img src="/DoAn/laptrinhweb/front-end/img/cart.png" alt="Giỏ hàng" style="width:24px; "></a>
         </div>
         <nav>
             <ul id="menu">

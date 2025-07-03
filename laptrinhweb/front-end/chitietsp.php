@@ -105,7 +105,6 @@
     }
 
     h1 {
-        text-align: center;
         font-size: 20px;
         margin-top: 10px;
         font-weight: bold;
@@ -135,6 +134,15 @@ if ($result->num_rows == 0) {
 
 $product = $result->fetch_assoc();
 ?>
+<?php if (isset($_SESSION['error'])): ?>
+    <div id="error-alert" style="background: #f44336; color: white; padding: 12px 20px; border-radius: 4px; font-weight: bold; text-align: center; position: fixed; top: 100px; left: 50%; transform: translateX(-50%); z-index: 9999;">
+        <?php
+        echo $_SESSION['error'];
+        unset($_SESSION['error']);
+        ?>
+    </div>
+<?php endif; ?>
+
 <main>
     <div class="muasp">
         <div class="imgsp">
@@ -148,14 +156,34 @@ $product = $result->fetch_assoc();
             <p class="tensp"><?php echo $product['ten']; ?></p>
             <p class="tinhtrang">Tình trạng: <?php echo ($product['soluong'] > 0) ? 'Còn hàng' : 'Hết hàng'; ?></p>
             <p class="gia">Giá: <?php echo number_format($product['gia'], 0, ',', '.'); ?>đ</p>
-            <div style="display:flex; gap:10px; line-height: 30px;">
-                <label for="soluong">Số lượng:</label>
-                <input type="number" id="soluong" name="soluong" value="1" min="1" max="<?php echo $product['soluong']; ?>" style="width: 50px;">
-            </div>
-            <div style="margin-top: 10px;">
-                <button type="button">Mua ngay</button>
-                <button type="button">Thêm vào giỏ hàng</button>
-            </div>
+
+            <form action="/DoAn/laptrinhweb/back-end/themgiohang.php" method="post">
+                <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                <input type="hidden" name="product_ten" value="<?php echo $product['ten']; ?>">
+                <input type="hidden" name="product_gia" value="<?php echo $product['gia']; ?>">
+                <input type="hidden" name="hinhanh" value="<?php echo $product['hinhanh']; ?>">
+
+                <div style="display:flex; gap:10px; line-height: 30px;">
+                    <label for="soluong">Số lượng:</label>
+                    <input type="number" id="soluong" name="soluong" value="1" min="1" max="<?php echo $product['soluong']; ?>" style="margin-top: 10px; text-align: center;width: 100px;height: 30px;">
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <button type="submit" name="muangay">Mua ngay</button>
+                    <button type="submit" name="add_to_cart">Thêm vào giỏ hàng</button>
+                </div>
+            </form>
+            <?php
+            echo '<div style="height: 30px; margin-top: 10px;">';
+            if (isset($_GET['msg'])) {
+                if ($_GET['msg'] === 'success') {
+                    echo '<span style="color: green;">✅ Đã thêm vào giỏ hàng.</span>';
+                } elseif ($_GET['msg'] === 'fail') {
+                    echo '<span style="color: red;">❌ Số lượng vượt quá tồn kho.</span>';
+                }
+            }
+            echo '</div>';
+            ?>
         </div>
     </div>
 
