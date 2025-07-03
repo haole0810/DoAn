@@ -8,7 +8,6 @@ $row = $result->fetch_assoc();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ten = $_POST['ten'];
     $gia = $_POST['gia'];
-    $hinhanh = $_POST['hinhanh'];
     $loai = $_POST['loai'];
     $danhmuc = $_POST['danhmuc'];
     $thuonghieu = $_POST['thuonghieu'];
@@ -17,19 +16,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $huongdan = $_POST['huongdan'];
     $soluong = $_POST['soluong'];
 
-    $stmt = $link->prepare("UPDATE sanpham SET ten=?,gia=?,hinhanh=?,loai=?,danhmuc=?,thuonghieu=?,mota=?,thanhphan=?,huongdan=?,soluong=? WHERE id=?");
+    // mặc định giữ nguyên ảnh cũ
+    $hinhanh = $row['hinhanh']; 
+
+    // nếu upload ảnh mới
+    if (isset($_FILES['hinhanh']) && $_FILES['hinhanh']['error'] == 0) {
+      $target_dir = "../uploads/";
+      $filename = basename($_FILES["hinhanh"]["name"]);
+      $target_file = $target_dir . $filename;
+
+      if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], $target_file)) {
+        $hinhanh = "uploads/" . $filename;
+      } else {
+        echo "Upload ảnh mới thất bại.";
+        exit;
+      }
+    }
+
+    $stmt = $link->prepare("UPDATE sanpham SET 
+        ten=?, gia=?, hinhanh=?, loai=?, danhmuc=?, thuonghieu=?, mota=?, thanhphan=?, huongdan=?, soluong=? 
+        WHERE id=?");
     $stmt->bind_param("sissssssssi", $ten,$gia,$hinhanh,$loai,$danhmuc,$thuonghieu,$mota,$thanhphan,$huongdan,$soluong,$id);
     $stmt->execute();
 
     header("Location: ../index.php?section=product");
     exit;
 }
+
 ?>
 <h2>Sửa sản phẩm</h2>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
   Tên: <input name="ten" value="<?=$row['ten']?>"><br>
   Giá: <input name="gia" type="number" value="<?=$row['gia']?>"><br>
-  Ảnh: <input name="hinhanh" value="<?=$row['hinhanh']?>"><br>
+  Ảnh: <input name="hinhanh" type="file"><br>
   Loại: <input name="loai" value="<?=$row['loai']?>"><br>
   Danh mục: <input name="danhmuc" value="<?=$row['danhmuc']?>"><br>
   Thương hiệu: <input name="thuonghieu" value="<?=$row['thuonghieu']?>"><br>

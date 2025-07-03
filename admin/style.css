@@ -99,7 +99,7 @@ h2 {
     transition: transform 0.4s;
 }
 .add:hover {
-    color: #dc3131;
+    color: #c96a05c7;
     transform: scale(1.1);
 }
 table {

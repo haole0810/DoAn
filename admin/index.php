@@ -59,9 +59,9 @@
                     <td>".number_format($row['gia'],0,'.','.')."₫</td>
                     <td>{$row['soluong']}</td>
                     <td>
-                        <a href='product/del_product.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a> 
+                        <a href='product/del_product.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png'></a> 
                         | 
-                        <a href='product/edit_product.php?id={$row['id']}'>Sửa</a>
+                        <a href='product/edit_product.php?id={$row['id']}'><img src='../img/edit/edit_.png' style='bgcolor: black,'></a>
                     </td>
                     </tr>";
                 }
