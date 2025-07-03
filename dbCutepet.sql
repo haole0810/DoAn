@@ -337,7 +337,7 @@ INSERT INTO sanpham (id, ten, gia, hinhanh, loai, danhmuc, thuonghieu, mota, tha
 INSERT INTO sanpham (id, ten, gia, hinhanh, loai, danhmuc, thuonghieu, mota, thanhphan, huongdan, soluong) VALUES (118, 'Dầu tắm chó mèo lông dài TRIXIE Langhaar Shampoo', 180000, 'https://www.petmart.vn/wp-content/uploads/2016/04/dau-tam-cho-meo-long-dai-trixie-langhaar-300x300.jpg', 'phukien', 'Phụ kiện thú cưng', 'Đang cập nhật', 'Dầu tắm chó mèo lông dàiTRIXIELanghaar Shampoo dành cho tất cả các giống chó. Đặc biệt là những giống chó có bộ lông dài và dày như Poodle, Phốc sóc, Alaska, Samoyed…', 'Dầu tắm chó mèo lông dài TRIXIE Langhaar Shampoo với tác dụng chính trong việc làm mềm mượt lông cho thú cưng. Sữa tắm có nồng độ hóa chất thấp phù hợp với các chú chó có da nhạy cảm dễ bị kích ứng với xà phòng. Sử dụng được cho cả chó con.', 'Thành phầndầu tắm cho chóthân thiện với mọi loại da. Sản phẩm dầu tắm cho chó được chế tác với sự tài tình của các chuyên gia. Giảm bớt tối đa nồng độ hóa chất. Thành phần tác dụng dưỡng ẩm cao làm bóng và mềm mượt lông. Có nguồn gốc chủ yếu từ thiên nhiên, an toàn tuyệt đối cho làn da chó con.', 10);
 -- Thêm user (admin & user)
 INSERT INTO user (username, password, email, sdt, diachi, quyen) VALUES
-('admin1', 'admin123', 'admin@example.com', '0909123456', 'TP.HCM', 'admin'),
+('admin1', '0192023a7bbd73250516f069df18b500', 'admin@example.com', '0909123456', 'TP.HCM', 'admin'),
 ('user1', 'user123', 'user1@gmail.com', '0912345678', 'Hà Nội', 'user');
 
 -- user1 có giỏ hàng

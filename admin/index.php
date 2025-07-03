@@ -44,9 +44,9 @@
 
             if ($section === 'product') {
                 echo '<div class="content-head">
-                        <h2>Quản lý sản phẩm</h2>
-                        <button class="add">Thêm sản phẩm</button>
-                        </div>';
+                <h2>Quản lý sản phẩm</h2>
+                <button class="add" onclick="window.location.href=\'product/add_product.php\'">Thêm sản phẩm</button>
+                </div>';
                 echo '<table>
                         <tr>
                             <th>ID</th> <th>Tên sản phẩm</th> <th>Giá</th> <th>Số lượng</th> <th>Chỉnh sửa</th>
@@ -54,12 +54,16 @@
                 $result = $link->query("SELECT * FROM sanpham");
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>{$row['id']}</td>
-                            <td>{$row['ten']}</td>
-                            <td>" . number_format($row['gia'], 0, '.', '.') . "₫</td>
-                            <td>{$row['soluong']}</td>
-                            <td><a href='#'>Xóa</a> | <a href='#'>Sửa</a></td>
-                        </tr>";
+                    <td>{$row['id']}</td>
+                    <td>{$row['ten']}</td>
+                    <td>".number_format($row['gia'],0,'.','.')."₫</td>
+                    <td>{$row['soluong']}</td>
+                    <td>
+                        <a href='product/del_product.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a> 
+                        | 
+                        <a href='product/edit_product.php?id={$row['id']}'>Sửa</a>
+                    </td>
+                    </tr>";
                 }
                 echo "</table>";
             } elseif ($section === 'order') {
@@ -68,7 +72,7 @@
                         </div>';
                 echo '<table>
                         <tr>
-                            <th>ID</th> <th>ID_User</th> <th>Ngày đặt</th> <th>Trạng thái</th> <th>Tổng tiền</th> <th>Chỉnh sửa</th>
+                            <th>ID</th> <th>ID_User</th> <th>Tổng tiền</th> <th>Ngày đặt</th> <th>Trạng thái</th> <th>Chỉnh sửa</th>
                         </tr>';
                 $result = $link->query("SELECT * FROM donhang");
                 while ($row = $result->fetch_assoc()) {
@@ -78,7 +82,11 @@
                             <td>" . number_format($row['tong_tien'], 0, '.', '.') . "₫</td>
                             <td>{$row['ngaydat']}</td>
                             <td>{$row['trangthai']}</td>
-                            <td><a href='#'>Xóa</a> | <a href='#'>Sửa</a></td>
+                            <td>
+                                <a href='order/del_order.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a> 
+                                | 
+                                <a href='order/edit_order.php?id={$row['id']}'>Sửa</a>
+                            </td>
                         </tr>";
                 }
                 echo "</table>";
@@ -99,7 +107,11 @@
                             <td>{$row['ngay_gui']}</td>
                             <td>{$row['ngay_tra']}</td>
                             <td>{$row['ngay_dangky']}</td>
-                            <td><a href='#'>Xóa</a> | <a href='#'>Sửa</a></td>
+                            <td>
+                                <a href='consignment/del_consign.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a> 
+                                | 
+                                <a href='consignment/edit_consign.php?id={$row['id']}'>Sửa</a>
+                            </td>
                         </tr>";
                 }
                 echo "</table>";
@@ -118,7 +130,11 @@
                             <td>{$row['sdt']}</td>
                             <td>{$row['diachi']}</td>
                             <td>{$row['quyen']}</td>
-                            <td><a href='#'>Xóa</a> | <a href='#'>Sửa</a></td>
+                            <td>
+                                <a href='account/del_user.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a> 
+                                | 
+                                <a href='account/edit_user.php?id={$row['id']}'>Sửa</a>
+                            </td>
                         </tr>";
                 }
                 echo "</table>";
