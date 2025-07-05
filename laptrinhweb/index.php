@@ -34,11 +34,12 @@
         'kygui' => 'front-end/kygui.php',
         'giohang' => 'front-end/giohang.php',
         'chitietsp' => 'front-end/chitietsp.php',
-        'thongtincanhan' => 'front-end/thongtincanhan.php'
+        'thongtincanhan' => 'front-end/thongtincanhan.php',
+        'quenmk' => 'front-end/quenmk.php',
     ];
 
     // Các trang không cần header và footer
-    $noLayoutPages = ['dangnhap', 'dangky', 'kygui', 'thongtincanhan', 'thanhtoan'];
+    $noLayoutPages = ['dangnhap', 'dangky', 'kygui', 'thongtincanhan', 'thanhtoan', 'quenmk'];
 
     if (array_key_exists($page, $pages)) {
         if (!in_array($page, $noLayoutPages)) {

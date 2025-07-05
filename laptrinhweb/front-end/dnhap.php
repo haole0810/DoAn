@@ -129,7 +129,7 @@
                 <br>
                 <button type="submit">Đăng nhập</button>
             </form>
-            <p><a href="#">Quên mật khẩu?</a></p>
+            <p><a href="/DoAn/laptrinhweb/index.php?page=quenmk">Quên mật khẩu?</a></p>
             <p>Chưa có tài khoản? <a href="/DoAn/laptrinhweb/front-end/dki.php">Đăng ký</a></p>
         </div>
     </main>

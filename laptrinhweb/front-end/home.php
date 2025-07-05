@@ -125,17 +125,17 @@ while ($row = $result->fetch_assoc()) {
         </div>
         <script>
             const images = document.querySelectorAll('.banner img');
-            let current = 0;
+            let a = 0;
 
             function showNextSlide() {
-                images[current].classList.remove('active');
-                current = (current + 1) % images.length;
-                images[current].classList.add('active');
+                images[a].classList.remove('active');
+                a = (a + 1) % images.length;
+                images[a].classList.add('active');
             }
 
-            // Khởi động ảnh đầu tiên
+
             images[0].classList.add('active');
-            setInterval(showNextSlide, 1000); // 3 giây chuyển ảnh
+            setInterval(showNextSlide, 1000);
         </script>
 
         <!-- Product -->
