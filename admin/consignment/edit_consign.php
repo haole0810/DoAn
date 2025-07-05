@@ -26,13 +26,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<h2>Sửa hồ sơ ký gửi</h2>
-<form method="post">
-  Tên chủ: <input name="ten_chu" value="<?=$row['ten_chu']?>"><br>
-  SĐT: <input name="sdt" value="<?=$row['sdt']?>"><br>
-  Tên thú cưng: <input name="ten_thucung" value="<?=$row['ten_thucung']?>"><br>
-  Giống loài: <input name="giong_loai" value="<?=$row['giong_loai']?>"><br>
-  Ngày gửi: <input name="ngay_gui" type="date" value="<?=$row['ngay_gui']?>"><br>
-  Ngày trả: <input name="ngay_tra" type="date" value="<?=$row['ngay_tra']?>"><br>
-  <button type="submit">Cập nhật</button>
-</form>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thêm sản phẩm</title>
+  <link rel="stylesheet" href="../style_button.css">
+</head>
+<body>
+<h2>Chỉnh sửa ký gửi</h2>
+<div class="form-wrapper">
+  <form method="post">
+    <div class="form-column">
+      <label>Tên chủ:</label>
+      <input name="ten_chu" value="<?= $row['ten_chu'] ?>">
+
+      <label>SĐT:</label>
+      <input name="sdt" value="<?= $row['sdt'] ?>">
+
+      <label>Tên thú cưng:</label>
+      <input name="ten_thucung" value="<?= $row['ten_thucung'] ?>">
+
+      <label>Giống loài:</label>
+      <input name="giong_loai" value="<?= $row['giong_loai'] ?>">
+    </div>
+    <div class="form-column">
+      <label>Ngày gửi:</label>
+      <input type="date" name="ngay_gui" value="<?= $row['ngay_gui'] ?>">
+
+      <label>Ngày trả:</label>
+      <input type="date" name="ngay_tra" value="<?= $row['ngay_tra'] ?>">
+    </div>
+    <button type="submit">Lưu</button>
+  </form>
+</div>
+</body>

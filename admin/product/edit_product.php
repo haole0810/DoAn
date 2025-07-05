@@ -44,17 +44,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-<h2>Sửa sản phẩm</h2>
-<form method="post" enctype="multipart/form-data">
-  Tên: <input name="ten" value="<?=$row['ten']?>"><br>
-  Giá: <input name="gia" type="number" value="<?=$row['gia']?>"><br>
-  Ảnh: <input name="hinhanh" type="file"><br>
-  Loại: <input name="loai" value="<?=$row['loai']?>"><br>
-  Danh mục: <input name="danhmuc" value="<?=$row['danhmuc']?>"><br>
-  Thương hiệu: <input name="thuonghieu" value="<?=$row['thuonghieu']?>"><br>
-  Mô tả: <textarea name="mota"><?=$row['mota']?></textarea><br>
-  Thành phần: <textarea name="thanhphan"><?=$row['thanhphan']?></textarea><br>
-  Hướng dẫn: <textarea name="huongdan"><?=$row['huongdan']?></textarea><br>
-  Số lượng: <input name="soluong" type="number" value="<?=$row['soluong']?>"><br>
-  <button type="submit">Lưu</button>
-</form>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thêm sản phẩm</title>
+  <link rel="stylesheet" href="../style_button.css">
+</head>
+<body>
+  <h2>Thêm sản phẩm</h2>
+  <div class="form-wrapper">
+  <form method="post" enctype="multipart/form-data">
+    <div class="form-column">
+      <label>Tên</label>
+      <input name="ten">
+      <label>Giá</label>
+      <input name="gia" type="number">
+      <label>Ảnh</label>
+      <input name="hinhanh" type="file">
+      <label>Loại</label>
+      <input name="loai">
+      <label>Danh mục</label>
+      <input name="danhmuc">
+      <label>Thương hiệu</label>
+      <input name="thuonghieu">
+    </div>
+    <div class="form-column">
+      <label>Mô tả</label>
+      <textarea name="mota"></textarea>
+      <label>Thành phần</label>
+      <textarea name="thanhphan"></textarea>
+      <label>Hướng dẫn</label>
+      <textarea name="huongdan"></textarea>
+      <label>Số lượng</label>
+      <input name="soluong" type="number">
+    </div>
+    <button type="submit">Lưu</button>
+  </form>
+  </div>
+</body>

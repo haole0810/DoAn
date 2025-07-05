@@ -25,16 +25,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<h2>Sửa tài khoản</h2>
-<form method="post">
-  Username: <input name="username" value="<?=$row['username']?>"><br>
-  Email: <input name="email" value="<?=$row['email']?>"><br>
-  SĐT: <input name="sdt" value="<?=$row['sdt']?>"><br>
-  Địa chỉ: <textarea name="diachi"><?=$row['diachi']?></textarea><br>
-  Quyền:
-  <select name="quyen">
-    <option value="user" <?=$row['quyen']=='user'?'selected':''?>>user</option>
-    <option value="admin" <?=$row['quyen']=='admin'?'selected':''?>>admin</option>
-  </select>
-  <button type="submit">Cập nhật</button>
-</form>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thêm sản phẩm</title>
+  <link rel="stylesheet" href="../style_button.css">
+</head>
+<body>
+<h2>Chỉnh sửa tài khoản</h2>
+<div class="form-wrapper">
+  <form method="post">
+    <div class="form-column">
+      <label>Username:</label>
+      <input name="username" value="<?= $row['username'] ?>">
+      <label>Email:</label>
+      <input name="email" value="<?= $row['email'] ?>">
+      <label>SDT:</label>
+      <input name="sdt" value="<?= $row['sdt'] ?>">
+      <label>Địa chỉ:</label>
+      <textarea name="diachi"><?= $row['diachi'] ?></textarea>
+    </div>
+    <div class="form-column">
+      <label>Quyền:</label>
+      <select name="quyen">
+        <option value="user" <?= $row['quyen']=='user'?'selected':'' ?>>user</option>
+        <option value="admin" <?= $row['quyen']=='admin'?'selected':'' ?>>admin</option>
+      </select>
+      <label>Ngày tạo:</label>
+      <input type="text" value="<?= $row['ngaytao'] ?>" readonly>
+    </div>
+    <button type="submit">Lưu</button>
+  </form>
+</div>
+</body>

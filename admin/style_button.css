@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: rgba(255, 208, 97, 0.919);
+  background-color: rgb(255, 212, 138);
   margin: 0;
 }
 
@@ -13,7 +13,7 @@ h2 {
 .form-wrapper { 
   max-width: 800px;
   margin: 20px auto;
-  background-color: #c5aa8e92;
+  background-color: #ecd9c26e;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -40,6 +40,7 @@ label {
 input, textarea {
   width: 100%;
   padding: 8px;
+  background-color: aliceblue;
   border: 1px solid #d686a5;
   margin-bottom: 15px;
   border-radius: 5px;

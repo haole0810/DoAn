@@ -47,48 +47,61 @@
                 <h2>Quản lý sản phẩm</h2>
                 <button class="add" onclick="window.location.href=\'product/add_product.php\'"><img src="../img/addproduct/add_.png">Thêm sản phẩm</button>
                 </div>';
-                echo '<table>
-                        <tr>
-                            <th>ID</th> <th>Tên sản phẩm</th> <th>Giá</th> <th>Số lượng</th> <th>Chỉnh sửa</th>
-                        </tr>';
-                $result = $link->query("SELECT * FROM sanpham");
-                while ($row = $result->fetch_assoc()) {
+                require 'pagination/phan_trang.php';
+                $pagination = getPaginationData($link, 'sanpham', 'page', 5);
+                echo "<table>
+                <tr>
+                    <th>ID</th><th>Tên sản phẩm</th><th>Giá</th><th>Số lượng</th><th>Chỉnh sửa</th>
+                </tr>";
+                while ($row = $pagination['data']->fetch_assoc()) {
                     echo "<tr>
                     <td>{$row['id']}</td>
                     <td>{$row['ten']}</td>
                     <td>".number_format($row['gia'],0,'.','.')."₫</td>
                     <td>{$row['soluong']}</td>
                     <td>
-                        <a href='product/del_product.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png'></a> 
-                        | 
-                        <a href='product/edit_product.php?id={$row['id']}'><img src='../img/edit/edit_.png'></a>
+                        <a href='product/del_product.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png' width='20'></a>
+                        |
+                        <a href='product/edit_product.php?id={$row['id']}'><img src='../img/edit/edit_.png' width='20'></a>
                     </td>
                     </tr>";
                 }
                 echo "</table>";
+                renderPaginationLinks('page', $pagination['current_page'], $pagination['total_page']);
+
             } elseif ($section === 'order') {
                 echo '<div class="content-head">
                         <h2>Quản lý đơn hàng</h2>
-                        </div>';
+                    </div>';
                 echo '<table>
-                        <tr>
-                            <th>ID</th> <th>ID_User</th> <th>Tổng tiền</th> <th>Ngày đặt</th> <th>Trạng thái</th> <th>Chỉnh sửa</th>
-                        </tr>';
-                $result = $link->query("SELECT * FROM donhang");
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>
+                    <tr>
+                        <th>ID</th> <th>ID_User</th> <th>Tổng tiền</th> <th>Ngày đặt</th> <th>Trạng thái</th> <th>Chỉnh sửa</th>
+                    </tr>';
+                    $result = $link->query("SELECT * FROM donhang");
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
                             <td>{$row['id']}</td>
                             <td>{$row['id_khachvanglai']}</td>
                             <td>" . number_format($row['tong_tien'], 0, '.', '.') . "₫</td>
                             <td>{$row['ngaydat']}</td>
-                            <td>{$row['trangthai']}</td>
                             <td>
-                                <a href='order/del_order.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png'></a> 
-                                | 
-                                <a href='order/edit_order.php?id={$row['id']}'><img src='../img/edit/edit_.png'></a>
+                                $row[trangthai]
+                                <form method='post' action='order/edit_order.php'>
+                                    <input type='hidden' name='id' value=$row[id]>
+                                    <select name='trangthai'>
+                                        <option value='choxacnhan' $row[trangthai]=='choxacnhan'?'selected':''>Chờ xác nhận</option>
+                                        <option value='danggiao' $row[trangthai]=='danggiao' ? 'selected' : ''>Đang giao</option>
+                                        <option value='hoanthanh' $row[trangthai]=='hoanthanh' ? 'selected' : ''>Hoàn thành</option>
+                                        <option value='huy' $row[trangthai]=='huy' ? 'selected' : ''>Hủy</option>
+                                    </select>
+                                    <button type='submit'>Lưu</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href='order/del_order.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='../img/del/del_.png'></a>
                             </td>
                         </tr>";
-                }
+                    }
                 echo "</table>";
             } elseif ($section === 'consignment') {
                 echo '<div class="content-head"><h2>Quản lý ký gửi</h2></div>';
