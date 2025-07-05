@@ -30,7 +30,9 @@
                 <iframe id="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.088706757823!2d106.71414257465577!3d10.804517789345939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175293dceb22197%3A0x755bb0f39a48d4a6!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBHaWFvIFRow7RuZyBW4bqtbiBU4bqjaSBUaMOgbmggUGjhu5EgSOG7kyBDaMOtIE1pbmggLSBDxqEgc-G7nyAx!5e0!3m2!1svi!2s!4v1751074585023!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div style="border: 1px solid; padding: 15px;">
-                <p style="text-align: center; margin: 10px;">Hãy đến với Cute Pet</p>
+                <div style="position: relative; height: 40px; overflow: hidden; left:25%;">
+                    <p id="cutepet-text" style="position: absolute; margin: 10px;">Hãy đến với Cute Pet</p>
+                </div>
                 <p style="line-height: 3;">
                     <a class="branch" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.088706757823!2d106.71414257465577!3d10.804517789345939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175293dceb22197%3A0x755bb0f39a48d4a6!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBHaWFvIFRow7RuZyBW4bqtbiBU4bqjaSBUaMOgbmggUGjhu5EgSOG7kyBDaMOtIE1pbmggLSBDxqEgc-G7nyAx!5e0!3m2!1svi!2s!4v1751074585023!5m2!1svi!2s">02 Võ Oanh, Phường 25, Bình Thạnh, Hồ Chí Minh, Việt Nam</a><br>
                     <a class="branch" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15676.35483648852!2d106.70641774211742!3d10.804517608225385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527d6a28f0641%3A0x9f730fe7bfad29fd!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBHaWFvIHRow7RuZyB24bqtbiB04bqjaSBUUCBIQ00gVVRIIGPGoSBz4bufIDI!5e0!3m2!1svi!2s!4v1751074751988!5m2!1svi!2s"> 10 Đ. 12, Bình Khánh, Thủ Đức, Hồ Chí Minh, Việt Nam</a><br>
@@ -49,6 +51,18 @@
                     document.getElementById('map-frame').src = mapUrl;
                 });
             });
+            $(document).ready(function() {
+                $('#cutepet-text').css({
+                    position: 'relative',
+                    left: '-100%',
+                    opacity: 0
+                });
+
+                $('#cutepet-text').animate({
+                    left: '0',
+                    opacity: 1
+                }, 3000);
+            })
         </script>
     </div>
 </main>
