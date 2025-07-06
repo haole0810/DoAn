@@ -3,13 +3,11 @@ body {
   background-color: rgb(255, 212, 138);
   margin: 0;
 }
-
 h2 {
   text-align: center;
   margin-top: 20px;
   color: #333;
 }
-
 .form-wrapper { 
   max-width: 800px;
   margin: 20px auto;
@@ -18,25 +16,21 @@ h2 {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
-
 form {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-between;
 }
-
 .form-column {
   flex: 1;
   min-width: 300px;
 }
-
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
-
 input, textarea {
   width: 100%;
   padding: 8px;
@@ -45,7 +39,6 @@ input, textarea {
   margin-bottom: 15px;
   border-radius: 5px;
 }
-
 button[type="submit"] {
   background-color: #FFD54F;
   padding: 10px 20px;
@@ -56,7 +49,6 @@ button[type="submit"] {
   margin: auto;
   display: block;
 }
-
 button[type="submit"]:hover {
   background-color: #FBC02D;
 }

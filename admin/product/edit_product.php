@@ -16,10 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $huongdan = $_POST['huongdan'];
     $soluong = $_POST['soluong'];
 
-    // mặc định giữ nguyên ảnh cũ
     $hinhanh = $row['hinhanh']; 
 
-    // nếu upload ảnh mới
+    //upload ảnh mới
     if (isset($_FILES['hinhanh']) && $_FILES['hinhanh']['error'] == 0) {
       $target_dir = "../uploads/";
       $filename = basename($_FILES["hinhanh"]["name"]);

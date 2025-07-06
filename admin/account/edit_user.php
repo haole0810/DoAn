@@ -1,30 +1,28 @@
 <?php
-require('../connect.php');
-$id = $_GET['id'];
+  require('../connect.php');
+  $id = $_GET['id'];
 
-$result = $link->query("SELECT * FROM user WHERE id=$id");
-$row = $result->fetch_assoc();
+  $result = $link->query("SELECT * FROM user WHERE id=$id");
+  $row = $result->fetch_assoc();
 
-if (!$row) {
-    die("Không tìm thấy tài khoản.");
-}
+  if (!$row) {
+      die("Không tìm thấy tài khoản.");
+  }
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $username = $_POST['username'];
+      $email = $_POST['email'];
+      $sdt = $_POST['sdt'];
+      $diachi = $_POST['diachi'];
+      $quyen = $_POST['quyen'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $sdt = $_POST['sdt'];
-    $diachi = $_POST['diachi'];
-    $quyen = $_POST['quyen'];
+      $stmt = $link->prepare("UPDATE user SET username=?, email=?, sdt=?, diachi=?, quyen=? WHERE id=?");
+      $stmt->bind_param("sssssi", $username,$email,$sdt,$diachi,$quyen,$id);
+      $stmt->execute();
 
-    $stmt = $link->prepare("UPDATE user SET username=?, email=?, sdt=?, diachi=?, quyen=? WHERE id=?");
-    $stmt->bind_param("sssssi", $username,$email,$sdt,$diachi,$quyen,$id);
-    $stmt->execute();
-
-    header("Location: ../index.php?section=account");
-    exit;
-}
+      header("Location: ../index.php?section=account");
+      exit;
+  }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="vi">

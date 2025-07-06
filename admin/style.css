@@ -11,10 +11,10 @@
     align-items: center;
 }
 .logo {
-  float: left;
-  width: 16%;
-  height: 180px;
-  background-color: rgba(255, 223, 65, 0.919);
+    float: left;
+    width: 16%;
+    height: 180px;
+    background-color: rgba(255, 223, 65, 0.919);
 }
 .header-right {
     background-color: rgb(255, 212, 138);
@@ -32,19 +32,21 @@
     color: #6d6a6a;
 }
 .log_out {
-  display: inline-block;
-  background-color: white;
-  border: 1px solid #000;
-  margin-right: 5%;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: black;
-  transition: transform 0.2s;
+    display: inline-block;
+    background-color: white;
+    border: 1px solid #000;
+    margin-right: 5%;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
 }
 .log_out:hover {
   color: #dc3131;
-  transform: scale(1.1);
+  box-shadow: inset 2px 2px 10px #bcbcbc,
+        inset -2px -2px 10px #ffffff,
+        2px 2px 2px 10px #bcbcbc,
+        -2px -2px 10px #ffffff;
 }
 .menu {
     background-color: rgb(235, 160, 74);
@@ -90,20 +92,21 @@ h2 {
     margin-top: 25px;
 }
 .add {
-    width: 17%;
+    width: 16%;
     font-size: 16px;
     justify-content: right;
-    background-color: #fcdc58;
+    background-color: #ebb668cc;
     border: none;
     padding: 15px 15px;
-    border-radius: 6px;
+    border-radius: 40px;
     font-weight: bold;
     margin-bottom: 9px;
     margin-top: 15px;
     margin-left:10px;
     cursor: pointer;
     transition: transform 0.4s;
-}
+    box-shadow: inset 4px 4px 10px #bcbcbc,
+        inset -4px -4px 10px #ffffff,}
 .add img {
     width: 20%;
     height: 15%;
@@ -113,8 +116,10 @@ h2 {
     filter: invert(1);
 }
 .add:hover {
-    color: #c96a05c7;
-    transform: scale(1.1);
+    color: #ae1165;
+    box-shadow: inset 2px 2px 10px #bcbcbc,
+    inset -2px -2px 10px #ffffff,
+        -1px -1px 5px #ffffff;
 }
 table {
     width: 90%;

@@ -6,12 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gia = $_POST['gia'];
     $hinhanh = null;
     if (isset($_FILES['hinhanh']) && $_FILES['hinhanh']['error'] == 0) {
-        $target_dir = "../uploads/";   // thư mục chứa ảnh
+        $target_dir = "../uploads/";
         $filename = basename($_FILES["hinhanh"]["name"]);
         $target_file = $target_dir . $filename;
-        // bạn có thể kiểm tra thêm loại file tại đây
         if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], $target_file)) {
-          $hinhanh = "uploads/" . $filename; // lưu tên file để insert DB
+          $hinhanh = "uploads/" . $filename;
         } else {
           echo "Upload thất bại.";
           exit;

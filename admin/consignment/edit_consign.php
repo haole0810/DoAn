@@ -1,29 +1,28 @@
 <?php
-require('../connect.php');
-$id = $_GET['id'];
+  require('../connect.php');
+  $id = $_GET['id'];
 
-$result = $link->query("SELECT * FROM kygui WHERE id=$id");
-$row = $result->fetch_assoc();
+  $result = $link->query("SELECT * FROM kygui WHERE id=$id");
+  $row = $result->fetch_assoc();
 
-if (!$row) {
-    die("Không tìm thấy hồ sơ ký gửi.");
-}
+  if (!$row) {
+      die("Không tìm thấy hồ sơ ký gửi.");
+  }
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $ten_chu = $_POST['ten_chu'];
+      $sdt = $_POST['sdt'];
+      $ten_thucung = $_POST['ten_thucung'];
+      $giong_loai = $_POST['giong_loai'];
+      $ngay_gui = $_POST['ngay_gui'];
+      $ngay_tra = $_POST['ngay_tra'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ten_chu = $_POST['ten_chu'];
-    $sdt = $_POST['sdt'];
-    $ten_thucung = $_POST['ten_thucung'];
-    $giong_loai = $_POST['giong_loai'];
-    $ngay_gui = $_POST['ngay_gui'];
-    $ngay_tra = $_POST['ngay_tra'];
+      $stmt = $link->prepare("UPDATE kygui SET ten_chu=?, sdt=?, ten_thucung=?, giong_loai=?, ngay_gui=?, ngay_tra=? WHERE id=?");
+      $stmt->bind_param("ssssssi", $ten_chu, $sdt, $ten_thucung, $giong_loai, $ngay_gui, $ngay_tra, $id);
+      $stmt->execute();
 
-    $stmt = $link->prepare("UPDATE kygui SET ten_chu=?, sdt=?, ten_thucung=?, giong_loai=?, ngay_gui=?, ngay_tra=? WHERE id=?");
-    $stmt->bind_param("ssssssi", $ten_chu, $sdt, $ten_thucung, $giong_loai, $ngay_gui, $ngay_tra, $id);
-    $stmt->execute();
-
-    header("Location: ../index.php?section=kygui");
-    exit;
-}
+      header("Location: ../index.php?section=kygui");
+      exit;
+  }
 ?>
 
 
