@@ -22,16 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssss", $ten, $sdt, $ten_pet, $giong_loai, $ngay_gui, $ngay_tra);
 
     if ($stmt->execute()) {
-        $_SESSION['success'] = "Đăng ký ký gửi thành công!";
-        header("Location: /DoAn/laptrinhweb/index.php?page=home");
+        header("Location: /DoAn/laptrinhweb/index.php?kg=success");
         exit;
     } else {
-        $_SESSION['error'] = "Lỗi khi đăng ký ký gửi. Vui lòng thử lại.";
-        header("Location: /DoAn/laptrinhweb/index.php?page=kygui");
+        header("Location: /DoAn/laptrinhweb/index.php?kg=error1");
         exit;
     }
 } else {
-    $_SESSION['error'] = "Truy cập không hợp lệ.";
-    header("Location: /DoAn/laptrinhweb/index.php");
+    header("Location: /DoAn/laptrinhweb/index.php?kg=error2");
     exit;
 }

@@ -56,9 +56,11 @@
                 align-items: center;
                 font-size: 20px;
             }
+
             .cont:hover {
                 cursor: pointer;
             }
+
             a {
                 all: unset;
             }
@@ -111,7 +113,7 @@
             }
         </style>
     </header>
-    <?php include '../connect.php';
+    <?php include 'connect.php';
     session_start();
     if (!isset($_SESSION['user_id'])) {
         header('Location: /DoAn/laptrinhweb/front-end/dnhap.php');

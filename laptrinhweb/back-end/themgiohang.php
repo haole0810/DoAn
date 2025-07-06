@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../connect.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_id = $_POST['product_id'];
     $product_ten = $_POST['product_ten'];
     $product_gia = $_POST['product_gia'];
@@ -36,6 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
             'hinhanh' => $hinhanh
         ];
     }
-    header("Location: /DoAn/laptrinhweb/index.php?page=chitietsp&id=$product_id&msg=success");
+
+    if (isset($_POST['add_to_cart'])) {
+        header("Location: /DoAn/laptrinhweb/index.php?page=chitietsp&id=$product_id&msg=success");
+    } elseif (isset($_POST['muangay'])) {
+        header("Location: /DoAn/laptrinhweb/index.php?page=thanhtoan");
+    }
     exit;
 }

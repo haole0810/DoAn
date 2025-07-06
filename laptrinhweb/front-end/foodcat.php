@@ -1,11 +1,10 @@
 <?php
 include 'connect.php';
-include 'product_template.php'; // File chứa hàm renderProductPage()
+include 'product_template.php';
 
 $sql = "SELECT * FROM sanpham WHERE loai = 'cat'";
 $result = $conn->query($sql);
 
-// Tạo mảng sản phẩm để truyền vào template
 $products = [];
 while ($row = $result->fetch_assoc()) {
     $products[] = [
@@ -16,7 +15,7 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-// Tạo breadcrumb 
+
 $breadcrumb = [
     ["name" => "Trang chủ", "link" => "/DoAn/laptrinhweb/index.php"],
     ["name" => "Thức ăn cho mèo"]

@@ -68,7 +68,7 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
         $tong = $sp['gia'] * $sp['soluong'];
         $tong_phu += $tong;
     endforeach;
-    $tongtien = $tong_phu + 30000;
+    $tongtien = $tong_phu + 20000;
 }
 ?>
 
@@ -77,7 +77,7 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
         <a href="/DoAn/laptrinhweb/index.php"><img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET" style="height:100%;"></a>
     </header>
     <main style="display: flex; justify-content: center; align-items: center; gap: 100px; margin-top:0; ">
-        <div style="height: 620px; width: 645px"><img src="/DoAn/laptrinhweb/front-end/img/dki.png" style="width:100%; height:100% "></div>
+        <div style="height: 575px; width: 645px"><img src="/DoAn/laptrinhweb/front-end/img/dki.png" style="width:100%; height:100% "></div>
         <div>
             <form class="payment-form" method="POST" action="/DoAn/laptrinhweb/back-end/xulydonhang.php">
                 <h1>THÔNG TIN NGƯỜI NHẬN</h1>

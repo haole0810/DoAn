@@ -1,12 +1,13 @@
 <?php
-include 'connect.php'; // ✅ Đường dẫn đúng đến file connect.php
-include 'product_template.php'; // ✅ File chứa hàm renderProductPage()
+include 'connect.php';
+include 'product_template.php';
 
-// Lấy dữ liệu sản phẩm có loại là 'dog'
+
+
 $sql = "SELECT * FROM sanpham WHERE loai = 'dog'";
 $result = $conn->query($sql);
 
-// Tạo mảng sản phẩm để truyền vào template
+
 $products = [];
 while ($row = $result->fetch_assoc()) {
     $products[] = [
@@ -17,7 +18,7 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-// Tạo breadcrumb (dấu đường dẫn)
+
 $breadcrumb = [
     ["name" => "Trang chủ", "link" => "/DoAn/laptrinhweb/index.php"],
     ["name" => "Thức ăn cho chó"]

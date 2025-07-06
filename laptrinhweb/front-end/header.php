@@ -162,9 +162,6 @@ $username = $_SESSION['username'];
         }
 
         #btnsearch {
-            position: absolute;
-            top: 15px;
-            right: 610px;
             border: none;
             background: none;
             cursor: pointer;
@@ -205,10 +202,10 @@ $username = $_SESSION['username'];
         <span>Giờ làm việc: 8h00 đến 5h30 (Cả thứ 7 và Chủ Nhật)</span>
         <div class="login-links">
             <?php if (strpos($username, 'guest_') === 0): ?>
-                <a href="/DoAn/laptrinhweb/front-end/dnhap.php">Đăng nhập</a> |
-                <a href="/DoAn/laptrinhweb/front-end/dki.php">Đăng ký</a>
+                <a href="/DoAn/laptrinhweb/index.php?page=dnhap">Đăng nhập</a> |
+                <a href="/DoAn/laptrinhweb/index.php?page=dki">Đăng ký</a>
             <?php else: ?>
-                <a href="/DoAn/laptrinhweb/front-end/thongtincanhan.php"><span>Xin chào, <?= htmlspecialchars($username) ?></span></a> |
+                <a href="/DoAn/laptrinhweb/index.php?page=thongtincanhan"><span>Xin chào, <?= htmlspecialchars($username) ?></span></a> |
                 <a href="/DoAn/laptrinhweb/back-end/dxuat.php">Đăng xuất</a>
             <?php endif; ?>
         </div>
@@ -219,8 +216,13 @@ $username = $_SESSION['username'];
             <img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET">
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="Bạn cần tìm gì?">
-            <button type="submit" id="btnsearch"><img src="/DoAn/laptrinhweb/front-end/img/search.png" alt="tìm"></button>
+            <form action="/DoAn/laptrinhweb/index.php" method="GET" style="display: flex; gap: 20px;">
+                <input type="hidden" name="page" value="search">
+                <input type="text" name="search" placeholder="Bạn cần tìm gì?">
+                <button type="submit" id="btnsearch">
+                    <img src="/DoAn/laptrinhweb/front-end/img/search.png" alt="tìm">
+                </button>
+            </form>
             <a href="/DoAn/laptrinhweb/index.php?page=giohang"><img src="/DoAn/laptrinhweb/front-end/img/cart.png" alt="Giỏ hàng" style="width:24px; "></a>
         </div>
         <nav>

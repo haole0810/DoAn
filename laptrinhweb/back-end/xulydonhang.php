@@ -3,7 +3,6 @@ session_start();
 include '../connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['cart'])) {
-    // Kiểm tra dữ liệu đầu vào
     if (!isset($_POST['fullname'], $_POST['sdt'], $_POST['address'])) {
         echo "Thiếu thông tin người nhận.";
         exit;
@@ -17,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $sp) {
         $tong_tien += $sp['gia'] * $sp['soluong'];
     }
-    $tong_tien += 30000; // Phí vận chuyển cố định
+    $tong_tien += 20000;
 
     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
@@ -26,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['cart'])) {
         $stmt = $conn->prepare("INSERT INTO donhang (id_nguoidung, tong_tien) VALUES (?, ?)");
         $stmt->bind_param("id", $user_id, $tong_tien);
     } else {
-        // Người dùng chưa đăng nhập → tạo khách vãng lai
+        //tạo khách vãng lai
         $stmt_guest = $conn->prepare("INSERT INTO khach_vang_lai (ten, sdt, diachi) VALUES (?, ?, ?)");
         $stmt_guest->bind_param("sss", $fullname, $sdt, $address);
         $stmt_guest->execute();
@@ -47,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['cart'])) {
         $stmt_ct->execute();
     }
 
-    // Xóa giỏ hàng sau khi đặt
     unset($_SESSION['cart']);
 
     header("Location: /DoAn/laptrinhweb/index.php?page=giohang&tt=success");

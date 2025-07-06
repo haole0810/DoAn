@@ -74,6 +74,7 @@
         }, 4000);
     });
 </script>
+
 <?php if (isset($_SESSION['error'])): ?>
     <div id="error-alert" style="background: #f44336; color: white; padding: 12px 20px; border-radius: 4px; text-align: center; position: fixed; top: 100px; left: 50%; transform: translateX(-50%); z-index: 9999;">
         <?php
@@ -157,3 +158,8 @@
         </div>
     <?php endif; ?>
 </main>
+<?php
+if (isset($_GET['tt']) && $_GET['tt'] === 'success') {
+    echo "<script>alert('Đặt hàng thành công!');</script>";
+}
+?>

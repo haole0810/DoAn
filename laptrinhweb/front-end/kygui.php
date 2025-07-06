@@ -1,8 +1,5 @@
 <style>
     h1 {
-        position: absolute;
-        left: 1090px;
-        top: 150px;
         font-family: 'Anton';
         font-size: 65px;
     }
@@ -101,14 +98,21 @@
     });
 </script>
 
-
+<?php if (isset($_SESSION['error'])): ?>
+    <div class="alert alert-error" style="padding: 10px; background: #f8d7da; color: #721c24; margin: 20px 0; text-align: center;">
+        <?php
+        echo $_SESSION['error'];
+        unset($_SESSION['error']);
+        ?>
+    </div>
+<?php endif; ?>
 
 <header style=" background-color: #FFDE59; display: flex; justify-content: center; height:135px;">
     <a href="/DoAn/laptrinhweb/index.php"><img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET" style="height:100%;"></a>
 </header>
 <main style="display: flex; justify-content: center; align-items: center; gap: 100px; margin-top:0; ">
-    <div style="height: 620px; width: 645px"><img src="/DoAn/laptrinhweb/front-end/img/dnhap.png" style="width:100%; height:100% "></div>
-    <div>
+    <div style="height: 575px; width: 645px"><img src="/DoAn/laptrinhweb/front-end/img/dnhap.png" style="width:100%; height:100% "></div>
+    <div style="    align-items: center;display: flex; flex-direction: column;">
         <h1>Ký Gửi</h1>
         <form action="/DoAn/laptrinhweb/back-end/xulykygui.php" method="POST">
             <label for="ten">Tên chủ:</label>

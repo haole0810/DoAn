@@ -158,8 +158,8 @@
         <a href="/DoAn/laptrinhweb/index.php"><img src="/DoAn/laptrinhweb/front-end/img/logo.png" alt="Logo CUTEPETCUTEPET" style="height:100%;"></a>
     </header>
     <main style="display: flex; justify-content: center; align-items: center; gap: 100px; margin-top:0; ">
-        <div style="height: 620px; width: 645px"><img src="img/dki.png" style="width:100%; height:100% "></div>
-        <div>
+        <div style="height: 620px; width: 645px"><img src="/DoAn/laptrinhweb/front-end/img/dki.png" style="width:100%; height:100% "></div>
+        <div style="margin-top:20px;">
             <form action="" id='dki'>
                 <h1>Đăng kí</h1>
                 <label for="hoten">Tên khách hàng:</label>

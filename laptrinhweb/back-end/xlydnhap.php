@@ -13,7 +13,6 @@ $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Kiểm tra kết quả
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     if (md5($password) === $user['password']) {

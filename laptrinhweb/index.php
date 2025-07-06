@@ -25,8 +25,8 @@
     $pages = [
         'home' => 'front-end/home.php',
         'gioithieu' => 'front-end/gioithieu.php',
-        'dangky' => 'front-end/dki.php',
-        'dangnhap' => 'front-end/dnhap.php',
+        'dki' => 'front-end/dki.php',
+        'dnhap' => 'front-end/dnhap.php',
         'foodcat' => 'front-end/foodcat.php',
         'fooddog' => 'front-end/fooddog.php',
         'phukien' => 'front-end/phukien.php',
@@ -36,10 +36,11 @@
         'chitietsp' => 'front-end/chitietsp.php',
         'thongtincanhan' => 'front-end/thongtincanhan.php',
         'quenmk' => 'front-end/quenmk.php',
+        'search' => 'front-end/search.php',
     ];
 
     // Các trang không cần header và footer
-    $noLayoutPages = ['dangnhap', 'dangky', 'kygui', 'thongtincanhan', 'thanhtoan', 'quenmk'];
+    $noLayoutPages = ['dnhap', 'dki', 'kygui', 'thongtincanhan', 'thanhtoan', 'quenmk'];
 
     if (array_key_exists($page, $pages)) {
         if (!in_array($page, $noLayoutPages)) {
