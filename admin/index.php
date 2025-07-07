@@ -1,17 +1,19 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
-        header("Location: /DoAn/laptrinhweb/front-end/dnhap.php");
-        exit;
-    }   
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    header("Location: /DoAn/laptrinhweb/front-end/dnhap.php");
+    exit;
+}
 ?>
 <?php require("connect.php") ?>
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="top-bar">Giờ làm việc: 8h00 đến 5h30 (Cả thứ 7 và Chủ Nhật)</div>
@@ -32,10 +34,10 @@
         </div>
 
         <div class="menu">
-            <a href="index.php?section=product" class="<?php if (!isset($_GET['section']) || $_GET['section'] == 'product') echo 'active'; ?>">&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/box.png" style="width:38px"><br/>Sản phẩm</a>
-            <a href="index.php?section=order" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'order') echo 'active'; ?>"><img src="img/order/order_.png" style="margin-bottom: -18px; margin-top: -18px"><br/>Đơn hàng</a>
-            <a href="index.php?section=consignment" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'consignment') echo 'active'; ?>"><img src="img/kygui/consign_.png" style="margin-bottom: -18px; margin-top: -18px"><br/>Đơn ký gửi</a>
-            <a href="index.php?section=account" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'account') echo 'active'; ?>"><img src="img/account/user_.png" style="margin-bottom: -18px; margin-top: -18px"><br/>Tài khoản</a>
+            <a href="index.php?section=product" class="<?php if (!isset($_GET['section']) || $_GET['section'] == 'product') echo 'active'; ?>">&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/box.png" style="width:38px"><br />Sản phẩm</a>
+            <a href="index.php?section=order" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'order') echo 'active'; ?>"><img src="img/order/order_.png" style="margin-bottom: -18px; margin-top: -18px"><br />Đơn hàng</a>
+            <a href="index.php?section=consignment" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'consignment') echo 'active'; ?>"><img src="img/kygui/consign_.png" style="margin-bottom: -18px; margin-top: -18px"><br />Đơn ký gửi</a>
+            <a href="index.php?section=account" class="<?php if (isset($_GET['section']) && $_GET['section'] == 'account') echo 'active'; ?>"><img src="img/account/user_.png" style="margin-bottom: -18px; margin-top: -18px"><br />Tài khoản</a>
         </div>
 
         <div class="content" id="main-content">
@@ -48,7 +50,12 @@
                 <button class="add" onclick="window.location.href=\'product/add_product.php\'"><img src="img/addproduct/add_.png">Thêm sản phẩm</button>
                 </div>';
                 require 'pagination/phan_trang.php';
-                $pagination = getPaginationData($link, 'sanpham', 'page', 5);
+                $pagination = getPaginationData(
+                    $link,
+                    'sanpham',
+                    'page',
+                    8
+                );
                 echo "<table>
                 <tr>
                     <th>ID</th><th>Tên sản phẩm</th><th>Giá</th><th>Số lượng</th><th>Chỉnh sửa</th>
@@ -57,7 +64,7 @@
                     echo "<tr>
                     <td>{$row['id']}</td>
                     <td>{$row['ten']}</td>
-                    <td>".number_format($row['gia'],0,'.','.')."₫</td>
+                    <td>" . number_format($row['gia'], 0, '.', '.') . "₫</td>
                     <td>{$row['soluong']}</td>
                     <td>
                         <a href='product/del_product.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'><img src='img/del/del_.png' width='20'></a>
@@ -68,7 +75,6 @@
                 }
                 echo "</table>";
                 renderPaginationLinks('page', $pagination['current_page'], $pagination['total_page']);
-
             } elseif ($section === 'order') {
                 echo '<div class="content-head">
                         <h2>Quản lý đơn hàng</h2>
@@ -77,32 +83,32 @@
                     <tr>
                         <th>ID</th> <th>ID_User</th> <th>Tổng tiền</th> <th>Ngày đặt</th> <th>Trạng thái</th> <th>Chỉnh sửa</th>
                     </tr>';
-                    $result = $link->query("SELECT * FROM donhang");
-                    while ($row = $result->fetch_assoc()) {
+                $result = $link->query("SELECT * FROM donhang");
+                while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                        <td>{$row['id']}</td>";?>
+                        <td>{$row['id']}</td>"; ?>
                     <?php
-                        if ($row['id_nguoidung'] == NULL) {
-                            echo "<td>{$row['id_khachvanglai']}</td>";
-                        } else {
-                            echo "<td>{$row['id_nguoidung']}</td>";
-                        }
-                    ?>                        
-                        <td><?= number_format($row['tong_tien'], 0, '.', '.') . "₫</td>
+                    if ($row['id_nguoidung'] == NULL) {
+                        echo "<td>{$row['id_khachvanglai']}</td>";
+                    } else {
+                        echo "<td>{$row['id_nguoidung']}</td>";
+                    }
+                    ?>
+                    <td><?= number_format($row['tong_tien'], 0, '.', '.') . "₫</td>
                         <td>{$row['ngaydat']}</td>
                         <td>";
-                    ?>
+                        ?>
                         <form method="post" action="order/edit_order.php">
                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
                             <select name="trangthai">
-                                <option value="choxacnhan" <?= $row['trangthai']=='choxacnhan' ? 'selected' : '' ?>>Chờ xác nhận</option>
-                                <option value="danggiao" <?= $row['trangthai']=='danggiao' ? 'selected' : '' ?>>Đang giao</option>
-                                <option value="hoanthanh" <?= $row['trangthai']=='hoanthanh' ? 'selected' : '' ?>>Hoàn thành</option>
-                                <option value="huy" <?= $row['trangthai']=='huy' ? 'selected' : '' ?>>Hủy</option>
+                                <option value="choxacnhan" <?= $row['trangthai'] == 'choxacnhan' ? 'selected' : '' ?>>Chờ xác nhận</option>
+                                <option value="danggiao" <?= $row['trangthai'] == 'danggiao' ? 'selected' : '' ?>>Đang giao</option>
+                                <option value="hoanthanh" <?= $row['trangthai'] == 'hoanthanh' ? 'selected' : '' ?>>Hoàn thành</option>
+                                <option value="huy" <?= $row['trangthai'] == 'huy' ? 'selected' : '' ?>>Hủy</option>
                             </select>
                             <button type="submit">Lưu</button>
                         </form>
-                    <?php
+                <?php
                     echo "</td>
                         <td>
                         <a href='order/del_order.php?id={$row['id']}' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>
@@ -110,12 +116,11 @@
                         </a>
                         </td>
                     </tr>";
-                    }
+                }
                 echo "</table>";
                 require 'pagination/phan_trang.php';
-                $pagination = getPaginationData($link, 'donhang', 'page', 5);
+                $pagination = getPaginationData($link, 'donhang', 'page', 8);
                 renderPaginationLinks('page', $pagination['current_page'], $pagination['total_page']);
-
             } elseif ($section === 'consignment') {
                 echo '<div class="content-head"><h2>Quản lý ký gửi</h2></div>';
                 echo '<table>
@@ -142,7 +147,7 @@
                 }
                 echo "</table>";
                 require 'pagination/phan_trang.php';
-                $pagination = getPaginationData($link, 'kygui', 'page', 5);
+                $pagination = getPaginationData($link, 'kygui', 'page', 8);
                 renderPaginationLinks('page', $pagination['current_page'], $pagination['total_page']);
             } elseif ($section === 'account') {
                 echo '<div class="content-head"><h2>Quản lý tài khoản</h2></div>';
@@ -168,12 +173,12 @@
                 }
                 echo "</table>";
                 require 'pagination/phan_trang.php';
-                $pagination = getPaginationData($link, 'user', 'page', 5);
+                $pagination = getPaginationData($link, 'user', 'page', 8);
                 renderPaginationLinks('page', $pagination['current_page'], $pagination['total_page']);
-
             }
-            ?>
+                ?>
         </div>
     </div>
 </body>
+
 </html>

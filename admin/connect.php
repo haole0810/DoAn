@@ -2,7 +2,7 @@
 $port = "3306";
 $host = "localhost";
 $user = "root";
-$pass = "12345";
+$pass = "";
 $dbname = "cutepet2";
 
 $link = new mysqli($host, $user, $pass, $dbname, $port);
